@@ -87,3 +87,6 @@ struct CaseListView: View {
         return $items[idx]
     }
 }
+#Preview {
+    CaseListView()
+}

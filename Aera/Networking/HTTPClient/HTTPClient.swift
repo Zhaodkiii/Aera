@@ -1,318 +1,284 @@
+////
+////  HTTPClient.swift
+////  Aera
+////
+////  Created by Dream 話 on 2025/8/18.
+////
+//// Network Module Demo – similar architecture to RevenueCat (HTTPClient, ETagManager, etc).
+//// Modules covered:
+//// 1) Network request (HTTPClient: building requests, default headers, URLSession).
+//// 2) Error handling (NetworkError: mapping HTTP status codes and JSON errors).
+//// 3) Caching (ETagManager: using ETag for response caching, handling 304 Not Modified).
+//// 4) Response models (HTTPResponseBody protocol, HTTPResponse struct, JSON parsing).
+//// 5) Signing & verification (SignatureUtil: signing requests and verifying responses).
+//// 6) Callback deduplication (HTTPClient.pendingRequests to avoid duplicate requests).
 //
-//  HTTPClient.swift
-//  Aera
+//import Foundation
+//import CryptoKit
 //
-//  Created by Dream 話 on 2025/8/18.
-//
-
-import Foundation
-
-// MARK: - Logger (简单日志)
-enum LogLevel { case debug, info, warn, error }
-struct Logger {
-    static var enableVerbose = true
-    static func log(_ level: LogLevel, _ msg: @autoclosure () -> String) {
-        #if DEBUG
-        if enableVerbose { print("[\(level)] \(msg())") }
-        #endif
-    }
-}
-
-// MARK: - HTTP 基础类型
-enum HTTPMethod: String { case GET, POST }
-typealias HTTPHeaders = [String: String]
-
-protocol Endpoint {
-    /// 主 API Host
-    static var serverURL: URL { get }
-    /// 备用 Host（可为空）
-    var fallbackHosts: [URL] { get }
-    /// 是否需要认证（决定是否附加 Authorization）
-    var requiresAuth: Bool { get }
-    /// 是否参与 ETag 缓存
-    var usesETag: Bool { get }
-    /// 相对路径（拼接到 base）
-    var path: String { get }
-    /// 端点名（用于诊断与日志）
-    var name: String { get }
-}
-
-extension Endpoint {
-    var fallbackHosts: [URL] { [] }
-    func url(base: URL? = nil, fallbackIndex: Int? = nil) -> URL {
-        let baseURL: URL
-        if let idx = fallbackIndex, fallbackHosts.indices.contains(idx) {
-            baseURL = fallbackHosts[idx]
-        } else {
-            baseURL = base ?? Self.serverURL
-        }
-        return URL(string: path, relativeTo: baseURL)!
-    }
-}
-
-// MARK: - 请求体
-protocol HTTPRequestBody: Encodable {
-    /// 用于签名/回放保护时的确定性参数序列（可选）
-    var contentForSignature: [(key: String, value: String?)] { get }
-}
-extension HTTPRequestBody { var contentForSignature: [(key: String, value: String?)] { [] } }
-
-// MARK: - 请求模型
-struct HTTPRequest {
-    var method: HTTPMethod
-    var endpoint: Endpoint
-    var headers: HTTPHeaders = [:]
-    var body: HTTPRequestBody?
-    /// 是否允许 HTTPClient 自动重试（429/5xx 等）
-    var isRetryable: Bool = true
-    /// 用于支持备用 Host 的游标
-    fileprivate var fallbackIndex: Int? = nil
-}
-
-// MARK: - 响应体解码协议
-protocol HTTPResponseBody {
-    static func create(with data: Data) throws -> Self
-    /// 有些模型会携带服务端时间，可通过该接口更新（默认 no-op）
-    func copy(with newRequestDate: Date) -> Self
-}
-extension HTTPResponseBody {
-    func copy(with newRequestDate: Date) -> Self { self }
-}
-extension Data: HTTPResponseBody {
-    static func create(with data: Data) throws -> Data { data }
-}
-extension Decodable {
-    static func create(with data: Data) throws -> Self {
-        try JSONDecoder().decode(Self.self, from: data)
-    }
-}
-
-// MARK: - 状态码
-enum HTTPStatusCode: Equatable {
-    case code(Int)
-    var raw: Int {
-        switch self { case .code(let v): return v }
-    }
-    var isSuccess: Bool { (200...399).contains(raw) }
-    var isServerError: Bool { (500...599).contains(raw) }
-    var isNotModified: Bool { raw == 304 }
-    static func from(_ status: Int) -> HTTPStatusCode { .code(status) }
-}
-
-// MARK: - HTTP 响应与已验证响应
-struct HTTPResponse<Body: HTTPResponseBody> {
-    let status: HTTPStatusCode
-    let headers: [AnyHashable: Any]
-    let body: Body
-    let requestDate: Date?
-    enum Origin { case backend, cache }
-    let origin: Origin
-}
-
-struct VerifiedHTTPResponse<Body: HTTPResponseBody> {
-    let response: HTTPResponse<Body>
-    enum Verification { case notRequested, ok, failed }
-    let verification: Verification
-    var status: HTTPStatusCode { response.status }
-    var headers: [AnyHashable: Any] { response.headers }
-    var body: Body { response.body }
-    var requestDate: Date? { response.requestDate }
-    var origin: HTTPResponse<Body>.Origin { response.origin }
-//    func mapBody<T: HTTPResponseBody>(_ f: (Body) throws -> T) rethrows -> VerifiedHTTPResponse<T> {
-//        let new = try f(response.body)
-//        return .init(
-//            response: .init(status: response.status, headers: response.headers, body: new, requestDate: response.requestDate, origin: response.origin),
-//            verification: verification
-//        )
+//// 1. Network Request Module: HTTPClient encapsulates GET request logic.
+//class HTTPClient {
+//    private let baseURL: URL
+//    private let session: URLSession
+//    private let etagManager: ETagManager
+//    
+//    // Use a dictionary to cache callbacks for identical requests to prevent duplicate network calls.
+//    private var pendingRequests: [String: [(Result<ResponseTuple, NetworkError>) -> Void]] = [:]
+//    private let pendingRequestsLock = NSLock()
+//    
+//    // Define a tuple type for raw response data and status.
+//    private typealias ResponseTuple = (statusCode: Int, data: Data)
+//    
+//    // Default HTTP headers for all requests (static headers).
+//    private let defaultHeaders: [String: String] = [
+//        "Accept": "application/json",
+//        "Content-Type": "application/json"
+//    ]
+//    
+//    init(baseURL: URL) {
+//        self.baseURL = baseURL
+//        self.etagManager = ETagManager()
+//        // Configure URLSession with no built-in caching (we'll use ETagManager for caching).
+//        let config = URLSessionConfiguration.default
+//        config.requestCachePolicy = .reloadIgnoringLocalCacheData
+//        config.urlCache = nil
+//        self.session = URLSession(configuration: config)
 //    }
-}
-
-// MARK: - 重定向日志
-final class RedirectLoggerDelegate: NSObject, URLSessionTaskDelegate {
-    func urlSession(_ session: URLSession, task: URLSessionTask,
-                    willPerformHTTPRedirection response: HTTPURLResponse,
-                    newRequest request: URLRequest,
-                    completionHandler: @escaping (URLRequest?) -> Void) {
-        Logger.log(.debug, "Redirect: \(response.url?.absoluteString ?? "") -> \(request.url?.absoluteString ?? "")")
-        completionHandler(request)
-    }
-}
-
-// MARK: - HTTPClient
-final class HTTPClient {
-    struct Config {
-        let apiKey: String?
-        let requestTimeout: TimeInterval
-        let retriableStatus: Set<Int>   // e.g. [429]
-        init(apiKey: String? = nil, requestTimeout: TimeInterval = 15, retriableStatus: Set<Int> = [429]) {
-            self.apiKey = apiKey
-            self.requestTimeout = requestTimeout
-            self.retriableStatus = retriableStatus
-        }
-    }
-
-    private let session: URLSession
-    private let config: Config
-    private let etag: ETagManager
-    private let dns: DNSCheckerType.Type
-
-    /// 退避序列（秒）
-    private let backoff: [TimeInterval] = [0, 0.75, 3]
-
-    init(config: Config, etag: ETagManager = .init(), dnsChecker: DNSCheckerType.Type = DNSChecker.self) {
-        self.config = config
-        let conf = URLSessionConfiguration.ephemeral
-        conf.httpMaximumConnectionsPerHost = 1
-        conf.timeoutIntervalForRequest = config.requestTimeout
-        conf.timeoutIntervalForResource = config.requestTimeout
-        conf.urlCache = nil
-        self.session = URLSession(configuration: conf, delegate: RedirectLoggerDelegate(), delegateQueue: nil)
-        self.etag = etag
-        self.dns = dnsChecker
-    }
-
-    // 统一默认头
-    private func defaultHeaders() -> HTTPHeaders {
-        var h: HTTPHeaders = [
-            "Content-Type": "application/json",
-            "X-Client-Bundle-ID": Bundle.main.bundleIdentifier ?? "unknown",
-        ]
-        if let key = config.apiKey { h["Authorization"] = "Bearer \(key)" }
-        return h
-    }
-
-    /// 执行请求，解析为目标类型
-    func perform<T: HTTPResponseBody>(_ request: HTTPRequest,
-                                      responseType: T.Type = T.self,
-                                      completion: @escaping (Result<VerifiedHTTPResponse<T>, NetworkError>) -> Void) {
-        start(request, retryCount: 0, completion: completion)
-    }
-
-    // 内部：带重试与 fallback 的启动
-    private func start<T: HTTPResponseBody>(_ req: HTTPRequest,
-                                            retryCount: Int,
-                                            completion: @escaping (Result<VerifiedHTTPResponse<T>, NetworkError>) -> Void) {
-        var request = req
-
-        // 计算 URL（考虑 fallback）
-        let url = request.endpoint.url(fallbackIndex: request.fallbackIndex)
-        var urlRequest = URLRequest(url: url)
-        urlRequest.httpMethod = request.method.rawValue
-
-        // 组头
-        var headers = defaultHeaders()
-        if request.endpoint.requiresAuth, let key = config.apiKey {
-            headers["Authorization"] = "Bearer \(key)"
-        }
-        // ETag 请求头
-        if request.endpoint.usesETag {
-            let etagHeaders = etag.eTagHeaders(for: urlRequest, refreshIfRetried: retryCount > 0)
-            headers.merge(etagHeaders, uniquingKeysWith: { $1 })
-        }
-        // 自定义头
-        headers.merge(request.headers, uniquingKeysWith: { $1 })
-        urlRequest.allHTTPHeaderFields = headers
-
-        // Body
-        if let body = request.body {
-            do { urlRequest.httpBody = try JSONEncoder().encode(AnyEncodable(body)) }
-            catch { completion(.failure(.unableToCreateRequest(path: request.endpoint.path))); return }
-        }
-
-        Logger.log(.debug, "→ \(request.method.rawValue) \(url.absoluteString) headers=\(headers) retry#\(retryCount)")
-
-        let start = Date()
-        session.dataTask(with: urlRequest) { [weak self] data, resp, err in
-            guard let self else { return }
-
-            // 1) 传输错误 → DNS 拦截判定
-            if let err = err {
-                let netErr = self.dns.errorWithBlockedHost(from: err)
-                if case .dnsError = netErr {
-                    completion(.failure(netErr)); return
-                }
-                // 可否重试（如 先尝试 fallback host）
-                if request.isRetryable, let next = self.nextFallbackRequest(request) {
-                    Logger.log(.warn, "Transport error, try next fallback host")
-                    self.start(next, retryCount: retryCount, completion: completion)
-                } else {
-                    completion(.failure(.networkError(err as NSError)))
-                }
-                return
-            }
-
-            guard let http = resp as? HTTPURLResponse else {
-                completion(.failure(.unexpectedResponse(resp))); return
-            }
-            let status = HTTPStatusCode.from(http.statusCode)
-            Logger.log(.debug, "← \(http.statusCode) \(url.absoluteString) in \(Date().timeIntervalSince(start))s")
-
-            // 2) ETag：304 使用缓存；否则尝试写缓存
-            let effectiveData: Data?
-            if status.isNotModified {
-                // 从缓存取
-                if let cached = self.etag.cachedBody(for: urlRequest) {
-                    effectiveData = cached
-                } else {
-                    // 没缓存但 304：若允许重试则强制刷新一次
-                    if request.isRetryable && retryCount < self.backoff.count {
-                        Logger.log(.warn, "304 but no cache, retry without ETag…")
-                        // “刷新 ETag” 实现为：下一次 eTagHeaders 不带 If-None-Match
-                        self.start(request, retryCount: retryCount + 1, completion: completion)
-                        return
-                    } else {
-                        effectiveData = nil
-                    }
-                }
-            } else {
-                effectiveData = data
-                if request.endpoint.usesETag, let body = data {
-                    self.etag.storeIfPossible(response: body, headers: http.allHeaderFields, for: urlRequest, status: status.raw)
-                }
-            }
-
-            // 3) 非成功状态转后端错误
-            guard status.isSuccess, let bodyData = effectiveData ?? Data() as Data? else {
-                let err = ErrorResponse.from(data: effectiveData ?? Data(), headers: http.allHeaderFields, fallbackStatus: status.raw)
-                completion(.failure(.errorResponse(err, status)))
-                return
-            }
-
-            // 4) 解析 Body
-            do {
-                let parsed = try T.create(with: bodyData)
-                let resp = HTTPResponse(status: status, headers: http.allHeaderFields, body: parsed,
-                                        requestDate: Self.requestDate(from: http.allHeaderFields), origin: status.isNotModified ? .cache : .backend)
-                let verified = VerifiedHTTPResponse(response: resp, verification: .notRequested)
-                completion(.success(verified))
-            } catch {
-                completion(.failure(.decoding(error as NSError)))
-            }
-        }.resume()
-    }
-
-    private func nextFallbackRequest(_ req: HTTPRequest) -> HTTPRequest? {
-        var next = req
-        let nextIdx = (next.fallbackIndex ?? -1) + 1
-        if nextIdx < next.endpoint.fallbackHosts.count {
-            next.fallbackIndex = nextIdx
-            return next
-        }
-        return nil
-    }
-
-    private static func requestDate(from headers: [AnyHashable: Any]) -> Date? {
-        // 可根据服务端自定义头解析（示例：X-Request-Time: 毫秒）
-        if let s = headers["X-Request-Time"] as? String, let ms = UInt64(s) {
-            return Date(timeIntervalSince1970: TimeInterval(ms) / 1000.0)
-        }
-        return nil
-    }
-}
-
-// MARK: - AnyEncodable (编码工具)
-struct AnyEncodable: Encodable {
-    private let encodeFunc: (Encoder) throws -> Void
-    init<T: Encodable>(_ base: T) { self.encodeFunc = base.encode }
-    func encode(to encoder: Encoder) throws { try encodeFunc(encoder) }
-}
+//    
+//    // Perform a GET request to the given path, expecting a response body of type T.
+//    func get<T: HTTPResponseBody>(_ path: String, completion: @escaping (Result<HTTPResponse<T>, NetworkError>) -> Void) {
+//        // Build the full URL from base URL and the provided path.
+//        guard let url = URL(string: path, relativeTo: baseURL) else {
+//            completion(.failure(.invalidURL))
+//            return
+//        }
+//        // Unique key for this request (method + URL) for deduplication.
+//        let requestKey = "GET:\(url.absoluteString)"
+//        
+//        // Check if a request for this key is already in progress.
+//        pendingRequestsLock.lock()
+//        if var callbacks = pendingRequests[requestKey] {
+//            // A request is in-flight; append the new completion to the list and return (no new network call).
+//            callbacks.append({ result in
+//                // Transform the raw result (ResponseTuple) into the typed Result<HTTPResponse<T>, NetworkError>.
+//                let transformed = result.flatMap { tuple -> Result<HTTPResponse<T>, NetworkError> in
+//                    do {
+//                        let decoder = JSONDecoder()
+//                        let decodedObject = try decoder.decode(T.self, from: tuple.data)
+//                        let httpResponse = HTTPResponse(statusCode: tuple.statusCode, body: decodedObject)
+//                        return .success(httpResponse)
+//                    } catch {
+//                        return .failure(.decodeError(error))
+//                    }
+//                }
+//                // Call the original completion on the main thread.
+//                DispatchQueue.main.async {
+//                    completion(transformed)
+//                }
+//            })
+//            pendingRequests[requestKey] = callbacks
+//            pendingRequestsLock.unlock()
+//            return  // Another request is already handling this URL, so just wait for its result.
+//        } else {
+//            // No existing request for this key, start a new one.
+//            pendingRequests[requestKey] = [
+//                { result in
+//                    let transformed = result.flatMap { tuple -> Result<HTTPResponse<T>, NetworkError> in
+//                        do {
+//                            let decoder = JSONDecoder()
+//                            let decodedObject = try decoder.decode(T.self, from: tuple.data)
+//                            let httpResponse = HTTPResponse(statusCode: tuple.statusCode, body: decodedObject)
+//                            return .success(httpResponse)
+//                        } catch {
+//                            return .failure(.decodeError(error))
+//                        }
+//                    }
+//                    DispatchQueue.main.async {
+//                        completion(transformed)
+//                    }
+//                }
+//            ]
+//            pendingRequestsLock.unlock()
+//        }
+//        
+//        // Build URLRequest for the GET request.
+//        var request = URLRequest(url: url)
+//        request.httpMethod = "GET"
+//        // Set default headers.
+//        for (header, value) in defaultHeaders {
+//            request.setValue(value, forHTTPHeaderField: header)
+//        }
+//        // If we have a cached ETag for this URL, include it in the request headers to enable 304 responses.
+//        if let etag = etagManager.getETag(for: url) {
+//            request.setValue(etag, forHTTPHeaderField: "If-None-Match")
+//        }
+//        // Sign the request (adds an X-Signature header).
+//        SignatureUtil.sign(request: &request)
+//        
+//        // Execute the network request.
+//        let task = session.dataTask(with: request) { [weak self] data, response, error in
+//            guard let self = self else { return }
+//            // Prepare a result to broadcast to all callbacks waiting on this request.
+//            var result: Result<ResponseTuple, NetworkError>
+//            
+//            defer {
+//                // Deliver the result to all pending callbacks for this request, then clear them.
+//                self.pendingRequestsLock.lock()
+//                let callbacks = self.pendingRequests.removeValue(forKey: requestKey)
+//                self.pendingRequestsLock.unlock()
+//                callbacks?.forEach { $0(result) }
+//            }
+//            
+//            // Handle low-level request errors (e.g., no internet connection, timeout).
+//            if let err = error {
+//                result = .failure(.requestFailed(err))
+//                return
+//            }
+//            // Ensure we have an HTTPURLResponse with status code.
+//            guard let httpResponse = response as? HTTPURLResponse else {
+//                result = .failure(.invalidResponse)
+//                return
+//            }
+//            let status = httpResponse.statusCode
+//            // If server indicates content not modified (304), use cached data.
+//            if status == 304 {
+//                if let cachedData = self.etagManager.getCachedData(for: url) {
+//                    // Use cached response data since content is unchanged.
+//                    result = .success((statusCode: 304, data: cachedData))
+//                } else {
+//                    // 304 received but no cached data available – return an error.
+//                    result = .failure(.noCachedData)
+//                }
+//                return
+//            }
+//            // For HTTP error status codes (>= 400), try to parse error message and return a NetworkError.
+//            if status >= 400 {
+//                if let data = data {
+//                    // Attempt to decode a structured error from the response JSON.
+//                    if let apiError = try? JSONDecoder().decode(APIError.self, from: data),
+//                       let message = apiError.message {
+//                        result = .failure(.httpError(statusCode: status, message: message))
+//                    } else {
+//                        result = .failure(.httpError(statusCode: status, message: "HTTP \(status) error"))
+//                    }
+//                } else {
+//                    result = .failure(.httpError(statusCode: status, message: "HTTP \(status) error"))
+//                }
+//                return
+//            }
+//            // At this point, status is 200–299 (successful response with content).
+//            guard let data = data else {
+//                // No data in a success response is unexpected.
+//                result = .failure(.invalidResponse)
+//                return
+//            }
+//            // Verify the response's signature (if a signature header is present).
+//            if !SignatureUtil.verify(response: httpResponse, data: data) {
+//                result = .failure(.invalidSignature)
+//                return
+//            }
+//            // Store the data in cache if an ETag is provided in the response headers.
+//            if let etag = httpResponse.value(forHTTPHeaderField: "ETag") {
+//                self.etagManager.storeResponse(url: url, data: data, eTag: etag)
+//            }
+//            // Package the raw response data and status code as a successful result.
+//            result = .success((statusCode: status, data: data))
+//        }
+//        task.resume()
+//    }
+//}
+//
+//// 2. Error Handling Module: Define a custom Error type for network errors.
+//enum NetworkError: Error {
+//    case invalidURL                    // Malformed URL
+//    case requestFailed(Error)          // Underlying URLSession error (no network, etc.)
+//    case invalidResponse               // Missing or invalid HTTPURLResponse/data
+//    case httpError(statusCode: Int, message: String)  // HTTP status code indicates error, with message
+//    case decodeError(Error)            // JSON decoding of response failed
+//    case invalidSignature              // Response signature validation failed
+//    case noCachedData                  // 304 received but no cached data available
+//}
+//
+//// 3. Cache Management Module: ETagManager for caching responses using ETag.
+//class ETagManager {
+//    private var cache: [URL: (etag: String, data: Data)] = [:]
+//    private let lock = NSLock()
+//    
+//    // Get stored ETag for a URL (to send in If-None-Match).
+//    func getETag(for url: URL) -> String? {
+//        lock.lock()
+//        defer { lock.unlock() }
+//        return cache[url]?.etag
+//    }
+//    
+//    // Get cached response data for a URL.
+//    func getCachedData(for url: URL) -> Data? {
+//        lock.lock()
+//        defer { lock.unlock() }
+//        return cache[url]?.data
+//    }
+//    
+//    // Store or update the cached data and ETag for a URL.
+//    func storeResponse(url: URL, data: Data, eTag: String) {
+//        lock.lock()
+//        cache[url] = (eTag, data)
+//        lock.unlock()
+//    }
+//}
+//
+//// 4. Response Handling & Data Structures:
+//protocol HTTPResponseBody: Decodable { }  // Marker protocol for models that can be decoded from JSON.
+//
+//// Generic HTTPResponse container to hold status code and decoded body.
+//struct HTTPResponse<Body: HTTPResponseBody> {
+//    let statusCode: Int
+//    let body: Body
+//}
+//
+//// Example response model conforming to HTTPResponseBody.
+//struct UserInfo: HTTPResponseBody {
+//    let id: String
+//    let name: String
+//}
+//
+//// If the API returns an error payload in JSON, define a structure to parse it.
+//struct APIError: Decodable {
+//    let code: Int?
+//    let message: String?
+//}
+//
+//// 5. Signature & Verification Module: sign outgoing requests and verify incoming responses.
+//struct SignatureUtil {
+//    // Secret key shared with server (for demo purposes, a constant string).
+//    private static let secretKey = "my_shared_secret"
+//    
+//    // Sign the request by adding an "X-Signature" header (HMAC-SHA256 of method + path).
+//    static func sign(request: inout URLRequest) {
+//        guard let url = request.url else { return }
+//        let path = url.path    // using path as the data to sign (could include query or body if needed)
+//        let method = request.httpMethod ?? "GET"
+//        // Compute HMAC-SHA256 signature.
+//        let dataToSign = Data((method + path).utf8)
+//        let key = SymmetricKey(data: Data(secretKey.utf8))
+//        let signature = HMAC<SHA256>.authenticationCode(for: dataToSign, using: key)
+//        // Convert signature to hex string.
+//        let signatureHex = signature.map { String(format: "%02x", $0) }.joined()
+//        // Set the signature header.
+//        request.setValue(signatureHex, forHTTPHeaderField: "X-Signature")
+//        // (In a real implementation, you might also include a timestamp or nonce to prevent replay attacks.)
+//    }
+//    
+//    // Verify the response by checking the "X-Signature" header against our own HMAC of the response data.
+//    static func verify(response: HTTPURLResponse, data: Data) -> Bool {
+//        // If there's no signature header in the response, skip verification.
+//        guard let serverSignature = response.value(forHTTPHeaderField: "X-Signature") else {
+//            return true
+//        }
+//        let key = SymmetricKey(data: Data(secretKey.utf8))
+//        // Compute expected HMAC of the response data.
+//        let expectedSignature = HMAC<SHA256>.authenticationCode(for: data, using: key)
+//        let expectedSignatureHex = expectedSignature.map { String(format: "%02x", $0) }.joined()
+//        // Compare the server's signature with our expected signature.
+//        return serverSignature == expectedSignatureHex
+//    }
+//}

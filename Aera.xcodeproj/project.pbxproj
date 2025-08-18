@@ -11,10 +11,6 @@
 		F1DA3D7F2E53575D001F8E4D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DA3D7E2E53575D001F8E4D /* ContentView.swift */; };
 		F1DA3D812E53575E001F8E4D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F1DA3D802E53575E001F8E4D /* Assets.xcassets */; };
 		F1DA3D942E535804001F8E4D /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DA3D932E535803001F8E4D /* HTTPClient.swift */; };
-		F1DA3D992E535848001F8E4D /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DA3D982E535847001F8E4D /* NetworkError.swift */; };
-		F1DA3D9C2E535878001F8E4D /* CacheFetchPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DA3D9B2E535877001F8E4D /* CacheFetchPolicy.swift */; };
-		F1DA3D9E2E5358A9001F8E4D /* test.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DA3D9D2E5358A4001F8E4D /* test.swift */; };
-		F1DA3DA02E538553001F8E4D /* DemoAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DA3D9F2E538553001F8E4D /* DemoAPI.swift */; };
 		F1DA3DA32E538649001F8E4D /* CaseItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DA3DA22E538648001F8E4D /* CaseItem.swift */; };
 		F1DA3DA52E538680001F8E4D /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DA3DA42E53867F001F8E4D /* Repository.swift */; };
 		F1DA3DA72E538690001F8E4D /* CaseListTabRoot.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DA3DA62E53868E001F8E4D /* CaseListTabRoot.swift */; };
@@ -22,6 +18,8 @@
 		F1DA3DAD2E5386E3001F8E4D /* Components.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DA3DAC2E5386E1001F8E4D /* Components.swift */; };
 		F1DA3DAF2E538710001F8E4D /* SeverityBadge.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DA3DAE2E538710001F8E4D /* SeverityBadge.swift */; };
 		F1DA3DB12E538725001F8E4D /* FlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DA3DB02E538725001F8E4D /* FlowLayout.swift */; };
+		F1DA3DB52E538851001F8E4D /* SwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DA3DB42E538851001F8E4D /* SwiftUIView.swift */; };
+		F1DA3DB82E5389BB001F8E4D /* NetworkRequestTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DA3DB72E5389BA001F8E4D /* NetworkRequestTestView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,10 +28,6 @@
 		F1DA3D7E2E53575D001F8E4D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		F1DA3D802E53575E001F8E4D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F1DA3D932E535803001F8E4D /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
-		F1DA3D982E535847001F8E4D /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
-		F1DA3D9B2E535877001F8E4D /* CacheFetchPolicy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheFetchPolicy.swift; sourceTree = "<group>"; };
-		F1DA3D9D2E5358A4001F8E4D /* test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = test.swift; sourceTree = "<group>"; };
-		F1DA3D9F2E538553001F8E4D /* DemoAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoAPI.swift; sourceTree = "<group>"; };
 		F1DA3DA22E538648001F8E4D /* CaseItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaseItem.swift; sourceTree = "<group>"; };
 		F1DA3DA42E53867F001F8E4D /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
 		F1DA3DA62E53868E001F8E4D /* CaseListTabRoot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaseListTabRoot.swift; sourceTree = "<group>"; };
@@ -41,6 +35,8 @@
 		F1DA3DAC2E5386E1001F8E4D /* Components.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Components.swift; sourceTree = "<group>"; };
 		F1DA3DAE2E538710001F8E4D /* SeverityBadge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeverityBadge.swift; sourceTree = "<group>"; };
 		F1DA3DB02E538725001F8E4D /* FlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowLayout.swift; sourceTree = "<group>"; };
+		F1DA3DB42E538851001F8E4D /* SwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIView.swift; sourceTree = "<group>"; };
+		F1DA3DB72E5389BA001F8E4D /* NetworkRequestTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequestTestView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -94,12 +90,13 @@
 		F1DA3D902E53578B001F8E4D /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				F1DA3DA12E538641001F8E4D /* Model */,
 				F1DA3DB02E538725001F8E4D /* FlowLayout.swift */,
 				F1DA3DAC2E5386E1001F8E4D /* Components.swift */,
 				F1DA3DAA2E5386CA001F8E4D /* CaseListView.swift */,
 				F1DA3DA62E53868E001F8E4D /* CaseListTabRoot.swift */,
-				F1DA3DA12E538641001F8E4D /* Model */,
 				F1DA3DAE2E538710001F8E4D /* SeverityBadge.swift */,
+				F1DA3DB42E538851001F8E4D /* SwiftUIView.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -107,10 +104,7 @@
 		F1DA3D912E5357EE001F8E4D /* Networking */ = {
 			isa = PBXGroup;
 			children = (
-				F1DA3D9F2E538553001F8E4D /* DemoAPI.swift */,
-				F1DA3D9D2E5358A4001F8E4D /* test.swift */,
-				F1DA3D9A2E53586E001F8E4D /* Caching */,
-				F1DA3D952E535833001F8E4D /* Error Handling */,
+				F1DA3DB62E5389B2001F8E4D /* Test */,
 				F1DA3D922E5357FA001F8E4D /* HTTPClient */,
 			);
 			path = Networking;
@@ -124,22 +118,6 @@
 			path = HTTPClient;
 			sourceTree = "<group>";
 		};
-		F1DA3D952E535833001F8E4D /* Error Handling */ = {
-			isa = PBXGroup;
-			children = (
-				F1DA3D982E535847001F8E4D /* NetworkError.swift */,
-			);
-			path = "Error Handling";
-			sourceTree = "<group>";
-		};
-		F1DA3D9A2E53586E001F8E4D /* Caching */ = {
-			isa = PBXGroup;
-			children = (
-				F1DA3D9B2E535877001F8E4D /* CacheFetchPolicy.swift */,
-			);
-			path = Caching;
-			sourceTree = "<group>";
-		};
 		F1DA3DA12E538641001F8E4D /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -147,6 +125,14 @@
 				F1DA3DA22E538648001F8E4D /* CaseItem.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		F1DA3DB62E5389B2001F8E4D /* Test */ = {
+			isa = PBXGroup;
+			children = (
+				F1DA3DB72E5389BA001F8E4D /* NetworkRequestTestView.swift */,
+			);
+			path = Test;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -225,19 +211,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				F1DA3DAB2E5386CC001F8E4D /* CaseListView.swift in Sources */,
+				F1DA3DB82E5389BB001F8E4D /* NetworkRequestTestView.swift in Sources */,
 				F1DA3DAD2E5386E3001F8E4D /* Components.swift in Sources */,
-				F1DA3D9C2E535878001F8E4D /* CacheFetchPolicy.swift in Sources */,
 				F1DA3DA72E538690001F8E4D /* CaseListTabRoot.swift in Sources */,
-				F1DA3D9E2E5358A9001F8E4D /* test.swift in Sources */,
 				F1DA3DB12E538725001F8E4D /* FlowLayout.swift in Sources */,
 				F1DA3D7F2E53575D001F8E4D /* ContentView.swift in Sources */,
-				F1DA3D992E535848001F8E4D /* NetworkError.swift in Sources */,
 				F1DA3DA32E538649001F8E4D /* CaseItem.swift in Sources */,
 				F1DA3D7D2E53575D001F8E4D /* AeraApp.swift in Sources */,
-				F1DA3DA02E538553001F8E4D /* DemoAPI.swift in Sources */,
 				F1DA3D942E535804001F8E4D /* HTTPClient.swift in Sources */,
 				F1DA3DA52E538680001F8E4D /* Repository.swift in Sources */,
 				F1DA3DAF2E538710001F8E4D /* SeverityBadge.swift in Sources */,
+				F1DA3DB52E538851001F8E4D /* SwiftUIView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
