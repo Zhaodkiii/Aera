@@ -7,18 +7,49 @@
 import SwiftUI
 
 struct CaseListTabRoot: View {
+    @State private var isPush = false
+
     var body: some View {
-        TabView {
-//            Text("问诊内容占位")
-            DjangoEndpointsDemoView()
-                .tabItem {
-                    Label("问诊", systemImage: "stethoscope")
+        
+        NavigationStack {
+            TabView {
+                DjangoEndpointsDemoView()
+                    .tabItem {
+                        Label("问诊", systemImage: "stethoscope")
+                    }
+                CaseListView()
+                    .tabItem {
+                        Label("病例", systemImage: "rectangle.stack.person.crop")
+                    }
+                //                        .injectMetrics() // <<< 只需这一个
+                
+            }
+            .navigationDestination(isPresented: $isPush) {
+                       AddCaseEntryView()
+                   }
+            .toolbar {
+                ToolbarItem(placement: .topBarLeading) {
+                    Button {
+                        // 用户头像或个人中心
+                    } label: {
+                        Image(systemName: "person.crop.circle")
+                            .font(.title3)
+                    }
                 }
-            CaseListView()
-                .tabItem {
-                    Label("病例", systemImage: "rectangle.stack.person.crop")
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button {
+                        // 新增病例
+                        isPush = true
+
+                    } label: {
+                        Image(systemName: "plus")
+                            .font(.title3)
+                    }
                 }
+            }
+            
         }
+        
     }
 }
 

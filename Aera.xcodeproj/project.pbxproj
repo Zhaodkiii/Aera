@@ -20,6 +20,16 @@
 		F1DA3DB12E538725001F8E4D /* FlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DA3DB02E538725001F8E4D /* FlowLayout.swift */; };
 		F1DA3DB52E538851001F8E4D /* SwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DA3DB42E538851001F8E4D /* SwiftUIView.swift */; };
 		F1DA3DB82E5389BB001F8E4D /* NetworkRequestTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DA3DB72E5389BA001F8E4D /* NetworkRequestTestView.swift */; };
+		F1DA3DBD2E54B954001F8E4D /* CaseCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DA3DBC2E54B954001F8E4D /* CaseCard.swift */; };
+		F1DA3DCF2E54BC48001F8E4D /* Screen.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DA3DCE2E54BC48001F8E4D /* Screen.swift */; };
+		F1DA3DD22E54BCF7001F8E4D /* View+.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DA3DD12E54BCF7001F8E4D /* View+.swift */; };
+		F1DA3DD42E54BD1D001F8E4D /* Metrics+.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DA3DD32E54BD1B001F8E4D /* Metrics+.swift */; };
+		F1DA3DD62E54BE84001F8E4D /* CardSizing.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DA3DD52E54BE84001F8E4D /* CardSizing.swift */; };
+		F1DA3DD92E54C6A3001F8E4D /* AddCaseEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DA3DD82E54C69E001F8E4D /* AddCaseEntryView.swift */; };
+		F1DA3DDB2E54CECD001F8E4D /* CaseUploadChoiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DA3DDA2E54CEBE001F8E4D /* CaseUploadChoiceView.swift */; };
+		F1DA3DDE2E54D7EC001F8E4D /* ConfirmRecognizedCaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DA3DDD2E54D7EB001F8E4D /* ConfirmRecognizedCaseView.swift */; };
+		F1DA3DE02E54DC60001F8E4D /* RecognizeProcessingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DA3DDF2E54DC5F001F8E4D /* RecognizeProcessingView.swift */; };
+		F1DA3DE22E54E169001F8E4D /* CaseUploadHostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DA3DE12E54E169001F8E4D /* CaseUploadHostView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +47,17 @@
 		F1DA3DB02E538725001F8E4D /* FlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowLayout.swift; sourceTree = "<group>"; };
 		F1DA3DB42E538851001F8E4D /* SwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIView.swift; sourceTree = "<group>"; };
 		F1DA3DB72E5389BA001F8E4D /* NetworkRequestTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequestTestView.swift; sourceTree = "<group>"; };
+		F1DA3DBC2E54B954001F8E4D /* CaseCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaseCard.swift; sourceTree = "<group>"; };
+		F1DA3DCE2E54BC48001F8E4D /* Screen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Screen.swift; sourceTree = "<group>"; };
+		F1DA3DD12E54BCF7001F8E4D /* View+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+.swift"; sourceTree = "<group>"; };
+		F1DA3DD32E54BD1B001F8E4D /* Metrics+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Metrics+.swift"; sourceTree = "<group>"; };
+		F1DA3DD52E54BE84001F8E4D /* CardSizing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardSizing.swift; sourceTree = "<group>"; };
+		F1DA3DD82E54C69E001F8E4D /* AddCaseEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCaseEntryView.swift; sourceTree = "<group>"; };
+		F1DA3DDA2E54CEBE001F8E4D /* CaseUploadChoiceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaseUploadChoiceView.swift; sourceTree = "<group>"; };
+		F1DA3DDC2E54D0F8001F8E4D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		F1DA3DDD2E54D7EB001F8E4D /* ConfirmRecognizedCaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmRecognizedCaseView.swift; sourceTree = "<group>"; };
+		F1DA3DDF2E54DC5F001F8E4D /* RecognizeProcessingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecognizeProcessingView.swift; sourceTree = "<group>"; };
+		F1DA3DE12E54E169001F8E4D /* CaseUploadHostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaseUploadHostView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -77,6 +98,7 @@
 		F1DA3D8A2E535773001F8E4D /* Aera */ = {
 			isa = PBXGroup;
 			children = (
+				F1DA3DDC2E54D0F8001F8E4D /* Info.plist */,
 				F1DA3D912E5357EE001F8E4D /* Networking */,
 				F1DA3D902E53578B001F8E4D /* UI */,
 				F1DA3D8E2E535780001F8E4D /* Preview Content */,
@@ -90,6 +112,9 @@
 		F1DA3D902E53578B001F8E4D /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				F1DA3DD02E54BCE7001F8E4D /* Extensions */,
+				F1DA3DCD2E54BC3F001F8E4D /* Helpers */,
+				F1DA3DBB2E54B93F001F8E4D /* CaseHome */,
 				F1DA3DA12E538641001F8E4D /* Model */,
 				F1DA3DB02E538725001F8E4D /* FlowLayout.swift */,
 				F1DA3DAC2E5386E1001F8E4D /* Components.swift */,
@@ -133,6 +158,45 @@
 				F1DA3DB72E5389BA001F8E4D /* NetworkRequestTestView.swift */,
 			);
 			path = Test;
+			sourceTree = "<group>";
+		};
+		F1DA3DBB2E54B93F001F8E4D /* CaseHome */ = {
+			isa = PBXGroup;
+			children = (
+				F1DA3DD72E54C67E001F8E4D /* AddCase */,
+				F1DA3DBC2E54B954001F8E4D /* CaseCard.swift */,
+			);
+			path = CaseHome;
+			sourceTree = "<group>";
+		};
+		F1DA3DCD2E54BC3F001F8E4D /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				F1DA3DD52E54BE84001F8E4D /* CardSizing.swift */,
+				F1DA3DCE2E54BC48001F8E4D /* Screen.swift */,
+				F1DA3DD32E54BD1B001F8E4D /* Metrics+.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		F1DA3DD02E54BCE7001F8E4D /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				F1DA3DD12E54BCF7001F8E4D /* View+.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		F1DA3DD72E54C67E001F8E4D /* AddCase */ = {
+			isa = PBXGroup;
+			children = (
+				F1DA3DE12E54E169001F8E4D /* CaseUploadHostView.swift */,
+				F1DA3DDF2E54DC5F001F8E4D /* RecognizeProcessingView.swift */,
+				F1DA3DDD2E54D7EB001F8E4D /* ConfirmRecognizedCaseView.swift */,
+				F1DA3DDA2E54CEBE001F8E4D /* CaseUploadChoiceView.swift */,
+				F1DA3DD82E54C69E001F8E4D /* AddCaseEntryView.swift */,
+			);
+			path = AddCase;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -213,15 +277,25 @@
 				F1DA3DAB2E5386CC001F8E4D /* CaseListView.swift in Sources */,
 				F1DA3DB82E5389BB001F8E4D /* NetworkRequestTestView.swift in Sources */,
 				F1DA3DAD2E5386E3001F8E4D /* Components.swift in Sources */,
+				F1DA3DD92E54C6A3001F8E4D /* AddCaseEntryView.swift in Sources */,
 				F1DA3DA72E538690001F8E4D /* CaseListTabRoot.swift in Sources */,
+				F1DA3DBD2E54B954001F8E4D /* CaseCard.swift in Sources */,
+				F1DA3DE02E54DC60001F8E4D /* RecognizeProcessingView.swift in Sources */,
 				F1DA3DB12E538725001F8E4D /* FlowLayout.swift in Sources */,
 				F1DA3D7F2E53575D001F8E4D /* ContentView.swift in Sources */,
+				F1DA3DCF2E54BC48001F8E4D /* Screen.swift in Sources */,
+				F1DA3DDE2E54D7EC001F8E4D /* ConfirmRecognizedCaseView.swift in Sources */,
+				F1DA3DD62E54BE84001F8E4D /* CardSizing.swift in Sources */,
 				F1DA3DA32E538649001F8E4D /* CaseItem.swift in Sources */,
 				F1DA3D7D2E53575D001F8E4D /* AeraApp.swift in Sources */,
+				F1DA3DDB2E54CECD001F8E4D /* CaseUploadChoiceView.swift in Sources */,
 				F1DA3D942E535804001F8E4D /* HTTPClient.swift in Sources */,
+				F1DA3DD42E54BD1D001F8E4D /* Metrics+.swift in Sources */,
 				F1DA3DA52E538680001F8E4D /* Repository.swift in Sources */,
 				F1DA3DAF2E538710001F8E4D /* SeverityBadge.swift in Sources */,
+				F1DA3DD22E54BCF7001F8E4D /* View+.swift in Sources */,
 				F1DA3DB52E538851001F8E4D /* SwiftUIView.swift in Sources */,
+				F1DA3DE22E54E169001F8E4D /* CaseUploadHostView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -358,6 +432,9 @@
 				DEVELOPMENT_TEAM = 4AN6PV98G7;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Aera/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Camera DEMO description <on error screen we take the description from info.plist file>";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "保存相册图片";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -388,6 +465,9 @@
 				DEVELOPMENT_TEAM = 4AN6PV98G7;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Aera/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Camera DEMO description <on error screen we take the description from info.plist file>";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "保存相册图片";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
