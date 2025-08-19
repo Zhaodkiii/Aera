@@ -129,7 +129,8 @@ final class HTTPClient {
         defaultHeaders.forEach { req.setValue($1, forHTTPHeaderField: $0) }
         if method == "POST" { req.httpBody = body }
         if let tag = etag.etag(for: url) { req.setValue(tag, forHTTPHeaderField: "If-None-Match") }
-        
+        print(url)
+
         // 发送
         let raw: Raw
         do {
@@ -227,7 +228,7 @@ final class DjangoVM: ObservableObject {
     func ping() async {
         isLoading = true; defer { isLoading = false }
         log("➡️ GET /ping")
-        let res: Result<HTTPResponse<PingResp>, NetworkError> = await client.get("/ping")
+        let res: Result<HTTPResponse<PingResp>, NetworkError> = await client.get("/testnet/ping")
         switch res {
         case .success(let r):
             log("✅ \(r.statusCode) ok=\(r.body.ok), hello=\(r.body.hello)")
@@ -241,7 +242,7 @@ final class DjangoVM: ObservableObject {
         isLoading = true; defer { isLoading = false }
         log("➡️ POST /notes")
         let body = NoteReq(title: "测试标题", content: "这是内容")
-        let res: Result<HTTPResponse<NoteResp>, NetworkError> = await client.post("/notes", json: body)
+        let res: Result<HTTPResponse<NoteResp>, NetworkError> = await client.post("/testnet/notes", json: body)
         switch res {
         case .success(let r):
             log("✅ \(r.statusCode) id=\(r.body.id) title=\(r.body.title ?? "-")")
@@ -254,7 +255,7 @@ final class DjangoVM: ObservableObject {
     func etag() async {
         isLoading = true; defer { isLoading = false }
         log("➡️ GET /etag")
-        let res: Result<HTTPResponse<ETagResp>, NetworkError> = await client.get("/etag")
+        let res: Result<HTTPResponse<ETagResp>, NetworkError> = await client.get("/testnet/etag")
         switch res {
         case .success(let r):
             log("✅ \(r.statusCode) version=\(r.body.version) data=\(r.body.data)")
@@ -265,12 +266,12 @@ final class DjangoVM: ObservableObject {
     }
     
     // 错误路由
-    func bad() async { await hitSimple(path: "/bad", name: "bad") }
-    func unauth() async { await hitSimple(path: "/unauth", name: "unauth") }
-    func tooMany() async { await hitSimple(path: "/too_many", name: "too_many") }
-    func boom() async { await hitSimple(path: "/boom", name: "boom") }
-    func redirect() async { await hitSimple(path: "/redirect", name: "redirect(307)") }
-    func maybe500() async { await hitSimple(path: "/maybe500", name: "maybe500") }
+    func bad() async { await hitSimple(path: "/testnet/bad", name: "bad") }
+    func unauth() async { await hitSimple(path: "/testnet/unauth", name: "unauth") }
+    func tooMany() async { await hitSimple(path: "/testnet/too_many", name: "too_many") }
+    func boom() async { await hitSimple(path: "/testnet/boom", name: "boom") }
+    func redirect() async { await hitSimple(path: "/testnet/redirect", name: "redirect(307)") }
+    func maybe500() async { await hitSimple(path: "/testnet/maybe500", name: "maybe500") }
     
     /// 用 Data→String 兜底打印的通用 GET（不做解码，只看状态/体）
     private func hitSimple(path: String, name: String) async {

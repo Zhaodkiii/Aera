@@ -9,7 +9,8 @@ import SwiftUI
 struct CaseListTabRoot: View {
     var body: some View {
         TabView {
-            Text("问诊内容占位")
+//            Text("问诊内容占位")
+            DjangoEndpointsDemoView()
                 .tabItem {
                     Label("问诊", systemImage: "stethoscope")
                 }
