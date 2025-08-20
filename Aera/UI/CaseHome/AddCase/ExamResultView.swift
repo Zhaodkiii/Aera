@@ -167,7 +167,7 @@ struct ExamResultView: View {
             Text("识别成功")
                 .foregroundStyle(Color.green.opacity(0.9))
             Spacer()
-            Badge(text: "置信度 \(result.meta.confidence)%", bg: .green.opacity(0.15), fg: .green)
+            Badgea(text: "置信度 \(result.meta.confidence)%", bg: .green.opacity(0.15), fg: .green)
         }
         .font(.subheadline)
         .padding(12)
@@ -176,14 +176,14 @@ struct ExamResultView: View {
     }
     
     private var patientCard: some View {
-        Card {
+        Cardea {
             HStack(spacing: 12) {
                 AvatarView(text: String(result.meta.patientName.prefix(2)), bg: .blue.opacity(0.15), fg: .blue)
                     .frame(width: 48, height: 48)
                 VStack(alignment: .leading, spacing: 2) {
                     HStack(spacing: 8) {
                         Text(result.meta.patientName).font(.headline)
-                        Badge(text: result.meta.relation)
+                        Badgea(text: result.meta.relation)
                     }
                     Text("\(result.meta.age)岁 · \(result.meta.gender)")
                         .foregroundStyle(.secondary)
@@ -202,7 +202,7 @@ struct ExamResultView: View {
     }
     
     private var abnormalOverviewCard: some View {
-        Card(tint: .red.opacity(0.08), border: .red.opacity(0.35)) {
+        Cardea(tint: .red.opacity(0.08), border: .red.opacity(0.35)) {
             HStack {
                 HStack(spacing: 6) {
                     Image(systemName: "exclamationmark.triangle.fill")
@@ -212,7 +212,7 @@ struct ExamResultView: View {
                         .font(.subheadline)
                 }
                 Spacer()
-                Badge(text: "需关注", bg: .red.opacity(0.15), fg: .red)
+                Badgea(text: "需关注", bg: .red.opacity(0.15), fg: .red)
             }
             .padding(.bottom, 6)
             
@@ -243,7 +243,7 @@ struct ExamResultView: View {
 
 // MARK: - 复用组件
 
-struct Card<Content: View>: View {
+struct Cardea<Content: View>: View {
     var tint: Color = Color(.systemBackground)
     var border: Color = Color(.separator).opacity(0.4)
     @ViewBuilder var content: Content
@@ -258,7 +258,7 @@ struct Card<Content: View>: View {
     }
 }
 
-struct Badge: View {
+struct Badgea: View {
     var text: String
     var bg: Color = Color(.secondarySystemBackground)
     var fg: Color = .primary
@@ -321,7 +321,7 @@ struct RiskCollapsibleCard<Content: View>: View {
     @ViewBuilder var content: Content
     
     var body: some View {
-        Card(tint: tint.opacity(0.07), border: tint.opacity(0.35)) {
+        Cardea(tint: tint.opacity(0.07), border: tint.opacity(0.35)) {
             Button {
                 withAnimation(.easeInOut) { isOpen.toggle() }
             } label: {
@@ -329,7 +329,7 @@ struct RiskCollapsibleCard<Content: View>: View {
                     HStack(spacing: 8) {
                         Image(systemName: icon).foregroundStyle(tint)
                         Text(title).foregroundStyle(tint)
-                        Badge(text: "\(count)项", bg: tint.opacity(0.15), fg: tint)
+                        Badgea(text: "\(count)项", bg: tint.opacity(0.15), fg: tint)
                     }
                     Spacer()
                     Image(systemName: isOpen ? "chevron.up" : "chevron.down").foregroundStyle(tint)
@@ -355,7 +355,7 @@ struct CollapsibleCard<Content: View>: View {
     @ViewBuilder var content: Content
     
     var body: some View {
-        Card {
+        Cardea {
             Button {
                 withAnimation(.easeInOut) { isOpen.toggle() }
             } label: {
@@ -363,7 +363,7 @@ struct CollapsibleCard<Content: View>: View {
                     HStack(spacing: 8) {
                         Image(systemName: icon).foregroundStyle(tint)
                         Text(title).foregroundStyle(.primary)
-                        Badge(text: badge, bg: Color(.secondarySystemBackground), fg: .primary)
+                        Badgea(text: badge, bg: Color(.secondarySystemBackground), fg: .primary)
                     }
                     Spacer()
                     Image(systemName: isOpen ? "chevron.up" : "chevron.down")
@@ -454,13 +454,13 @@ struct BasicItemCell: View {
     }
 }
 
-struct SummaryRow: View {
+struct SummaryRowa: View {
     let total: Int
     let normal: Int
     let abnormal: Int
     var onTap: () -> Void
     var body: some View {
-        Card {
+        Cardea {
             HStack {
                 Text("共\(total)项 · 正常\(normal)项 · 异常\(abnormal)项")
                     .font(.subheadline)
@@ -479,7 +479,7 @@ struct SummaryRow: View {
 struct SuggestionsCard: View {
     let suggestions: [String]
     var body: some View {
-        Card(tint: .blue.opacity(0.06), border: .blue.opacity(0.25)) {
+        Cardea(tint: .blue.opacity(0.06), border: .blue.opacity(0.25)) {
             HStack(spacing: 6) {
                 Image(systemName: "doc.text.fill").foregroundStyle(.blue)
                 Text("综合健康建议").font(.subheadline).bold()
@@ -495,7 +495,7 @@ struct SuggestionsCard: View {
 
 struct DisclaimerCard: View {
     var body: some View {
-        Card(tint: .yellow.opacity(0.08), border: .yellow.opacity(0.3)) {
+        Cardea(tint: .yellow.opacity(0.08), border: .yellow.opacity(0.3)) {
             Text("【免责声明】以上分析仅供参考，不能替代专业医生的诊断。请根据体检结果的异常程度及时就医咨询，特别是高风险项目需要尽快专科就诊。")
                 .font(.caption)
                 .foregroundStyle(.orange)

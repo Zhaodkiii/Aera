@@ -164,11 +164,13 @@ struct RecognizeProcessingView: View {
                 // 导航占位（隐藏跳转）
                 NavigationLink(isActive: $goToConfirm) {
                     if let result {
-                        ConfirmRecognizedCaseView(form: result) { _ in
-                            // 保存回调
-                            dismiss()   // 👈 pop 出去
-
-                        }
+//                        ConfirmRecognizedCaseView(form: result) { _ in
+//                            // 保存回调
+//                            dismiss()   // 👈 pop 出去
+//
+//                        }
+                        
+                        ExamResultView(result: .demo)
                     } else {
                         EmptyView()
                     }

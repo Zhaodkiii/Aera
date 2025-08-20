@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F1B8B5D02E5583C500C769C8 /* ExamResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B8B5CF2E5583C500C769C8 /* ExamResultView.swift */; };
 		F1DA3D7D2E53575D001F8E4D /* AeraApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DA3D7C2E53575D001F8E4D /* AeraApp.swift */; };
 		F1DA3D7F2E53575D001F8E4D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DA3D7E2E53575D001F8E4D /* ContentView.swift */; };
 		F1DA3D812E53575E001F8E4D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F1DA3D802E53575E001F8E4D /* Assets.xcassets */; };
@@ -33,6 +34,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F1B8B5CF2E5583C500C769C8 /* ExamResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamResultView.swift; sourceTree = "<group>"; };
 		F1DA3D792E53575D001F8E4D /* Aera.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Aera.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1DA3D7C2E53575D001F8E4D /* AeraApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AeraApp.swift; sourceTree = "<group>"; };
 		F1DA3D7E2E53575D001F8E4D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -195,6 +197,7 @@
 				F1DA3DDD2E54D7EB001F8E4D /* ConfirmRecognizedCaseView.swift */,
 				F1DA3DDA2E54CEBE001F8E4D /* CaseUploadChoiceView.swift */,
 				F1DA3DD82E54C69E001F8E4D /* AddCaseEntryView.swift */,
+				F1B8B5CF2E5583C500C769C8 /* ExamResultView.swift */,
 			);
 			path = AddCase;
 			sourceTree = "<group>";
@@ -278,6 +281,7 @@
 				F1DA3DB82E5389BB001F8E4D /* NetworkRequestTestView.swift in Sources */,
 				F1DA3DAD2E5386E3001F8E4D /* Components.swift in Sources */,
 				F1DA3DD92E54C6A3001F8E4D /* AddCaseEntryView.swift in Sources */,
+				F1B8B5D02E5583C500C769C8 /* ExamResultView.swift in Sources */,
 				F1DA3DA72E538690001F8E4D /* CaseListTabRoot.swift in Sources */,
 				F1DA3DBD2E54B954001F8E4D /* CaseCard.swift in Sources */,
 				F1DA3DE02E54DC60001F8E4D /* RecognizeProcessingView.swift in Sources */,
