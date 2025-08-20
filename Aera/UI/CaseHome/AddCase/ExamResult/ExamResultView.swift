@@ -85,110 +85,6 @@ fileprivate let dateF: DateFormatter = {
 }()
 
 
-// MARK: - 1) 升级本地模型
-
-/// 原来只有 normal/low/medium/high；为适配 JSON，补充 abnormal
-enum ExamAbnormalStatus: String, Codable, CaseIterable {
-    case normal
-    case low
-    case medium
-    case high
-    case abnormal       // 非方向性异常（如影像“阳性/阴性”）
-}
-
-enum ExamSeverity: String, Codable, CaseIterable {
-    case low
-    case medium
-    case high
-    
-    var color: Color {
-        switch self {
-        case .low:
-            return .yellow      // 低风险 → 绿色
-        case .medium:
-            return .orange     // 中风险 → 橙色
-        case .high:
-            return .red        // 高风险 → 红色
-        }
-    }
-}
-struct ExamItem: Identifiable, Codable {
-    let id: String
-    let category: String
-    let subcategory: String
-    let itemName: String
-    let result: String
-    let unit: String?
-    let referenceRange: String?
-    let status: ExamAbnormalStatus
-    let description: String?
-    let recommendation: String?
-    let severity: ExamSeverity?
-}
-
-struct ExamReportMeta {
-    var patientName: String
-    var relation: String
-    var age: Int
-    var gender: String
-    var scene: String
-    var examDate: Date
-    var hospital: String
-    var confidence: Int    // 0~100
-}
-
-struct ExamSection: Identifiable {
-    let id = UUID()
-    let title: String
-    let icon: String
-    let tint: Color
-    var items: [ExamItem]
-    var badgeText: String { "\(items.count)项" }
-}
-
-struct ExamReportResult {
-    var meta: ExamReportMeta
-    var highRisk: [ExamItem]
-    var midRisk: [ExamItem]
-    var lowRisk: [ExamItem]
-    var normalCount: Int
-    var abnormalCount: Int
-    var totalCount: Int { normalCount + abnormalCount }
-    var sections: [ExamSection]
-    var suggestions: [String]
-}
-
-// MARK: - 2) DTO（对齐你给的 JSON 字段）
-
-// MARK: - API DTO
-private struct ApiExamReport: Decodable {
-    let patientName: String
-    let age: Int
-    let gender: String
-    let relationship: String
-    let examType: String
-    let examDate: String
-    let institution: String
-    let abnormalCount: Int
-    let totalItems: Int
-    let normalItems: Int
-    let abnormalItems: [ApiAbnormalItem]
-    let confidence: Double
-}
-
-private struct ApiAbnormalItem: Decodable {
-    let id: String
-    let category: String
-    let subcategory: String
-    let itemName: String
-    let result: String
-    let unit: String?
-    let referenceRange: String?
-    let status: String          // "high" | "abnormal" | ...
-    let description: String?
-    let recommendation: String?
-    let severity: String?       // "low" | "medium" | "high"
-}
 
 // MARK: - 映射辅助
 private let apiDateF: DateFormatter = {
@@ -502,7 +398,9 @@ struct ExamResultView: View {
                 // 汇总与跳转
                 SummaryRowa(total: result.totalCount, normal: result.normalCount, abnormal: result.abnormalCount) {
                     // 查看详情 action
+                    PhysicalExamListView()
                 }
+                
                 
                 // 综合建议
                 SuggestionsCard(suggestions: result.suggestions)
@@ -757,7 +655,12 @@ struct CollapsibleCard<Content: View>: View {
                     Image(systemName: isOpen ? "chevron.up" : "chevron.down")
                         .foregroundStyle(.secondary)
                 }
-                .background(Color.clear)
+                .frame(maxWidth: .infinity)            // ✅ 占满一行
+
+                .contentShape(Rectangle())             // ✅ 空白处也能点
+//                .padding(.vertical, 8)                  // ✅ 提升命中舒适度
+
+
             }
             .buttonStyle(.plain)
 
@@ -853,11 +756,13 @@ struct BasicItemCell: View {
     }
 }
 
-struct SummaryRowa: View {
+struct SummaryRowa<Destination: View>: View {
     let total: Int
     let normal: Int
     let abnormal: Int
-    var onTap: () -> Void
+//    var onTap: () -> Void
+    @ViewBuilder var destination: () -> Destination
+
     var body: some View {
         Cardea {
             HStack {
@@ -865,13 +770,19 @@ struct SummaryRowa: View {
                     .font(.subheadline)
                     .foregroundStyle(.secondary)
                 Spacer()
-                Button("查看详情 →", action: onTap)
-                    .font(.subheadline)
-                    .foregroundStyle(.blue)
+//                Button("查看详情 →", action: onTap)
+//                    .font(.subheadline)
+//                    .foregroundStyle(.blue)
+                
+                NavigationLink(destination: destination()) {
+                    Text("查看详情 →")
+                }
+                .font(.subheadline)
+                .foregroundStyle(.blue)
             }
         }
         .contentShape(Rectangle())
-        .onTapGesture { onTap() }
+//        .onTapGesture { onTap() }
     }
 }
 

@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		F1B8B5D02E5583C500C769C8 /* ExamResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B8B5CF2E5583C500C769C8 /* ExamResultView.swift */; };
+		F1B8B5DB2E55E4F300C769C8 /* ExamItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B8B5DA2E55E4F300C769C8 /* ExamItem.swift */; };
+		F1B8B5E12E55E64900C769C8 /* PhysicalExamListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B8B5E02E55E64900C769C8 /* PhysicalExamListView.swift */; };
 		F1DA3D7D2E53575D001F8E4D /* AeraApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DA3D7C2E53575D001F8E4D /* AeraApp.swift */; };
 		F1DA3D7F2E53575D001F8E4D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DA3D7E2E53575D001F8E4D /* ContentView.swift */; };
 		F1DA3D812E53575E001F8E4D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F1DA3D802E53575E001F8E4D /* Assets.xcassets */; };
@@ -35,6 +37,8 @@
 
 /* Begin PBXFileReference section */
 		F1B8B5CF2E5583C500C769C8 /* ExamResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamResultView.swift; sourceTree = "<group>"; };
+		F1B8B5DA2E55E4F300C769C8 /* ExamItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamItem.swift; sourceTree = "<group>"; };
+		F1B8B5E02E55E64900C769C8 /* PhysicalExamListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhysicalExamListView.swift; sourceTree = "<group>"; };
 		F1DA3D792E53575D001F8E4D /* Aera.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Aera.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1DA3D7C2E53575D001F8E4D /* AeraApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AeraApp.swift; sourceTree = "<group>"; };
 		F1DA3D7E2E53575D001F8E4D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -81,6 +85,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F1B8B5D52E55E38F00C769C8 /* Component */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Component;
+			sourceTree = "<group>";
+		};
+		F1B8B5D62E55E3DC00C769C8 /* ExamResult */ = {
+			isa = PBXGroup;
+			children = (
+				F1B8B5D92E55E4CC00C769C8 /* Models */,
+				F1B8B5D52E55E38F00C769C8 /* Component */,
+				F1B8B5CF2E5583C500C769C8 /* ExamResultView.swift */,
+			);
+			path = ExamResult;
+			sourceTree = "<group>";
+		};
+		F1B8B5D92E55E4CC00C769C8 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F1B8B5DA2E55E4F300C769C8 /* ExamItem.swift */,
+				F1B8B5E02E55E64900C769C8 /* PhysicalExamListView.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		F1DA3D702E53575D001F8E4D = {
 			isa = PBXGroup;
 			children = (
@@ -192,12 +222,12 @@
 		F1DA3DD72E54C67E001F8E4D /* AddCase */ = {
 			isa = PBXGroup;
 			children = (
+				F1B8B5D62E55E3DC00C769C8 /* ExamResult */,
 				F1DA3DE12E54E169001F8E4D /* CaseUploadHostView.swift */,
 				F1DA3DDF2E54DC5F001F8E4D /* RecognizeProcessingView.swift */,
 				F1DA3DDD2E54D7EB001F8E4D /* ConfirmRecognizedCaseView.swift */,
 				F1DA3DDA2E54CEBE001F8E4D /* CaseUploadChoiceView.swift */,
 				F1DA3DD82E54C69E001F8E4D /* AddCaseEntryView.swift */,
-				F1B8B5CF2E5583C500C769C8 /* ExamResultView.swift */,
 			);
 			path = AddCase;
 			sourceTree = "<group>";
@@ -277,6 +307,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F1B8B5E12E55E64900C769C8 /* PhysicalExamListView.swift in Sources */,
 				F1DA3DAB2E5386CC001F8E4D /* CaseListView.swift in Sources */,
 				F1DA3DB82E5389BB001F8E4D /* NetworkRequestTestView.swift in Sources */,
 				F1DA3DAD2E5386E3001F8E4D /* Components.swift in Sources */,
@@ -297,6 +328,7 @@
 				F1DA3DD42E54BD1D001F8E4D /* Metrics+.swift in Sources */,
 				F1DA3DA52E538680001F8E4D /* Repository.swift in Sources */,
 				F1DA3DAF2E538710001F8E4D /* SeverityBadge.swift in Sources */,
+				F1B8B5DB2E55E4F300C769C8 /* ExamItem.swift in Sources */,
 				F1DA3DD22E54BCF7001F8E4D /* View+.swift in Sources */,
 				F1DA3DB52E538851001F8E4D /* SwiftUIView.swift in Sources */,
 				F1DA3DE22E54E169001F8E4D /* CaseUploadHostView.swift in Sources */,
