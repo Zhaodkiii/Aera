@@ -170,7 +170,7 @@ struct RecognizeProcessingView: View {
 //
 //                        }
                         
-                        ExamResultView(result: .demo)
+                        ExamResultView(result: .demoa)
                     } else {
                         EmptyView()
                     }
