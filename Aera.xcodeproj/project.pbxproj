@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DAD5B5392E56AFA70046554F /* CaseDetailScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD5B5382E56AFA70046554F /* CaseDetailScreen.swift */; };
+		DAD5B53B2E56B58E0046554F /* PatientDetailScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD5B53A2E56B58E0046554F /* PatientDetailScreen.swift */; };
 		F1B8B5D02E5583C500C769C8 /* ExamResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B8B5CF2E5583C500C769C8 /* ExamResultView.swift */; };
 		F1B8B5DB2E55E4F300C769C8 /* ExamItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B8B5DA2E55E4F300C769C8 /* ExamItem.swift */; };
 		F1B8B5E12E55E64900C769C8 /* PhysicalExamListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B8B5E02E55E64900C769C8 /* PhysicalExamListView.swift */; };
@@ -36,6 +38,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		DAD5B5382E56AFA70046554F /* CaseDetailScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaseDetailScreen.swift; sourceTree = "<group>"; };
+		DAD5B53A2E56B58E0046554F /* PatientDetailScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientDetailScreen.swift; sourceTree = "<group>"; };
 		F1B8B5CF2E5583C500C769C8 /* ExamResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamResultView.swift; sourceTree = "<group>"; };
 		F1B8B5DA2E55E4F300C769C8 /* ExamItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamItem.swift; sourceTree = "<group>"; };
 		F1B8B5E02E55E64900C769C8 /* PhysicalExamListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhysicalExamListView.swift; sourceTree = "<group>"; };
@@ -85,6 +89,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DAD5B5372E56AF920046554F /* 病例详细 */ = {
+			isa = PBXGroup;
+			children = (
+				DAD5B5382E56AFA70046554F /* CaseDetailScreen.swift */,
+				DAD5B53A2E56B58E0046554F /* PatientDetailScreen.swift */,
+			);
+			path = "病例详细";
+			sourceTree = "<group>";
+		};
 		F1B8B5D52E55E38F00C769C8 /* Component */ = {
 			isa = PBXGroup;
 			children = (
@@ -144,6 +157,7 @@
 		F1DA3D902E53578B001F8E4D /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				DAD5B5372E56AF920046554F /* 病例详细 */,
 				F1DA3DD02E54BCE7001F8E4D /* Extensions */,
 				F1DA3DCD2E54BC3F001F8E4D /* Helpers */,
 				F1DA3DBB2E54B93F001F8E4D /* CaseHome */,
@@ -309,6 +323,7 @@
 			files = (
 				F1B8B5E12E55E64900C769C8 /* PhysicalExamListView.swift in Sources */,
 				F1DA3DAB2E5386CC001F8E4D /* CaseListView.swift in Sources */,
+				DAD5B53B2E56B58E0046554F /* PatientDetailScreen.swift in Sources */,
 				F1DA3DB82E5389BB001F8E4D /* NetworkRequestTestView.swift in Sources */,
 				F1DA3DAD2E5386E3001F8E4D /* Components.swift in Sources */,
 				F1DA3DD92E54C6A3001F8E4D /* AddCaseEntryView.swift in Sources */,
@@ -325,6 +340,7 @@
 				F1DA3D7D2E53575D001F8E4D /* AeraApp.swift in Sources */,
 				F1DA3DDB2E54CECD001F8E4D /* CaseUploadChoiceView.swift in Sources */,
 				F1DA3D942E535804001F8E4D /* HTTPClient.swift in Sources */,
+				DAD5B5392E56AFA70046554F /* CaseDetailScreen.swift in Sources */,
 				F1DA3DD42E54BD1D001F8E4D /* Metrics+.swift in Sources */,
 				F1DA3DA52E538680001F8E4D /* Repository.swift in Sources */,
 				F1DA3DAF2E538710001F8E4D /* SeverityBadge.swift in Sources */,
