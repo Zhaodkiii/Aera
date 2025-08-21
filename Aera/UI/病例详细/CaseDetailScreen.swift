@@ -586,7 +586,10 @@ struct CaseDetailScreen: View {
             }
 
             // 悬浮新增按钮
-            Button { /* TODO: 新增记录 */ } label: {
+            NavigationLink {/* TODO: 新增记录 */
+                // 新增记录 action
+                CDNewRecordScreen()
+            } label: {
                 HStack(spacing: 8) { Image(systemName: "plus"); Text("新增记录") }
                     .padding(.horizontal, 16).padding(.vertical, 12)
                     .background(Capsule().fill(Color.blue))
@@ -596,7 +599,6 @@ struct CaseDetailScreen: View {
             .padding(.trailing, 20).padding(.bottom, 28)
         }
         .background(Color(.systemGroupedBackground))
-        .navigationBarHidden(true)
     }
 }
 
@@ -643,7 +645,7 @@ struct CaseDetailScreen_Previews: PreviewProvider {
 
     static var previews: some View {
         NavigationView {
-            CaseDetailScreen(patient: .samplePatient, events: .sampleEvents)
+            CaseDetailScreen(patient: .samplePatient, events: CDEventItem.sampleEvents)
         }
     }
 }

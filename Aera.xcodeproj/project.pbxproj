@@ -9,6 +9,16 @@
 /* Begin PBXBuildFile section */
 		DAD5B5392E56AFA70046554F /* CaseDetailScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD5B5382E56AFA70046554F /* CaseDetailScreen.swift */; };
 		DAD5B53B2E56B58E0046554F /* PatientDetailScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD5B53A2E56B58E0046554F /* PatientDetailScreen.swift */; };
+		DAD5B5402E56EDB60046554F /* CDNewRecordScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD5B53F2E56EDB60046554F /* CDNewRecordScreen.swift */; };
+		DAD5B5422E56EEF00046554F /* CDNewFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD5B5412E56EEF00046554F /* CDNewFormView.swift */; };
+		DAD5B5472E56F5FE0046554F /* AddEventRecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD5B5462E56F5FE0046554F /* AddEventRecordView.swift */; };
+		DAD5B54B2E56F9900046554F /* CDReportFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD5B54A2E56F9900046554F /* CDReportFormView.swift */; };
+		DAD5B54D2E5705A90046554F /* CDSymptomFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD5B54C2E5705A90046554F /* CDSymptomFormView.swift */; };
+		DAD5B54F2E5707970046554F /* CDVisitFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD5B54E2E5707970046554F /* CDVisitFormView.swift */; };
+		DAD5B5512E57095C0046554F /* CDMedicationFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD5B5502E57095C0046554F /* CDMedicationFormView.swift */; };
+		DAD5B5552E570AAE0046554F /* CDSurgeryFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD5B5542E570AAE0046554F /* CDSurgeryFormView.swift */; };
+		DAD5B5572E570C510046554F /* CDFollowupFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD5B5562E570C510046554F /* CDFollowupFormView.swift */; };
+		DAD5B55A2E570EDF0046554F /* HealthFormsKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD5B5592E570EDF0046554F /* HealthFormsKit.swift */; };
 		F1B8B5D02E5583C500C769C8 /* ExamResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B8B5CF2E5583C500C769C8 /* ExamResultView.swift */; };
 		F1B8B5DB2E55E4F300C769C8 /* ExamItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B8B5DA2E55E4F300C769C8 /* ExamItem.swift */; };
 		F1B8B5E12E55E64900C769C8 /* PhysicalExamListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B8B5E02E55E64900C769C8 /* PhysicalExamListView.swift */; };
@@ -40,6 +50,16 @@
 /* Begin PBXFileReference section */
 		DAD5B5382E56AFA70046554F /* CaseDetailScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaseDetailScreen.swift; sourceTree = "<group>"; };
 		DAD5B53A2E56B58E0046554F /* PatientDetailScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientDetailScreen.swift; sourceTree = "<group>"; };
+		DAD5B53F2E56EDB60046554F /* CDNewRecordScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDNewRecordScreen.swift; sourceTree = "<group>"; };
+		DAD5B5412E56EEF00046554F /* CDNewFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDNewFormView.swift; sourceTree = "<group>"; };
+		DAD5B5462E56F5FE0046554F /* AddEventRecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEventRecordView.swift; sourceTree = "<group>"; };
+		DAD5B54A2E56F9900046554F /* CDReportFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDReportFormView.swift; sourceTree = "<group>"; };
+		DAD5B54C2E5705A90046554F /* CDSymptomFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDSymptomFormView.swift; sourceTree = "<group>"; };
+		DAD5B54E2E5707970046554F /* CDVisitFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDVisitFormView.swift; sourceTree = "<group>"; };
+		DAD5B5502E57095C0046554F /* CDMedicationFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDMedicationFormView.swift; sourceTree = "<group>"; };
+		DAD5B5542E570AAE0046554F /* CDSurgeryFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDSurgeryFormView.swift; sourceTree = "<group>"; };
+		DAD5B5562E570C510046554F /* CDFollowupFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDFollowupFormView.swift; sourceTree = "<group>"; };
+		DAD5B5592E570EDF0046554F /* HealthFormsKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthFormsKit.swift; sourceTree = "<group>"; };
 		F1B8B5CF2E5583C500C769C8 /* ExamResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamResultView.swift; sourceTree = "<group>"; };
 		F1B8B5DA2E55E4F300C769C8 /* ExamItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamItem.swift; sourceTree = "<group>"; };
 		F1B8B5E02E55E64900C769C8 /* PhysicalExamListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhysicalExamListView.swift; sourceTree = "<group>"; };
@@ -92,10 +112,44 @@
 		DAD5B5372E56AF920046554F /* 病例详细 */ = {
 			isa = PBXGroup;
 			children = (
+				DAD5B5582E570ED10046554F /* 新增记录3 */,
+				DAD5B5432E56F5E30046554F /* 新增记录2 */,
+				DAD5B53C2E56ED940046554F /* 新增记录 */,
 				DAD5B5382E56AFA70046554F /* CaseDetailScreen.swift */,
 				DAD5B53A2E56B58E0046554F /* PatientDetailScreen.swift */,
 			);
 			path = "病例详细";
+			sourceTree = "<group>";
+		};
+		DAD5B53C2E56ED940046554F /* 新增记录 */ = {
+			isa = PBXGroup;
+			children = (
+				DAD5B53F2E56EDB60046554F /* CDNewRecordScreen.swift */,
+				DAD5B5412E56EEF00046554F /* CDNewFormView.swift */,
+				DAD5B54A2E56F9900046554F /* CDReportFormView.swift */,
+				DAD5B54C2E5705A90046554F /* CDSymptomFormView.swift */,
+				DAD5B54E2E5707970046554F /* CDVisitFormView.swift */,
+				DAD5B5502E57095C0046554F /* CDMedicationFormView.swift */,
+				DAD5B5542E570AAE0046554F /* CDSurgeryFormView.swift */,
+				DAD5B5562E570C510046554F /* CDFollowupFormView.swift */,
+			);
+			path = "新增记录";
+			sourceTree = "<group>";
+		};
+		DAD5B5432E56F5E30046554F /* 新增记录2 */ = {
+			isa = PBXGroup;
+			children = (
+				DAD5B5462E56F5FE0046554F /* AddEventRecordView.swift */,
+			);
+			path = "新增记录2";
+			sourceTree = "<group>";
+		};
+		DAD5B5582E570ED10046554F /* 新增记录3 */ = {
+			isa = PBXGroup;
+			children = (
+				DAD5B5592E570EDF0046554F /* HealthFormsKit.swift */,
+			);
+			path = "新增记录3";
 			sourceTree = "<group>";
 		};
 		F1B8B5D52E55E38F00C769C8 /* Component */ = {
@@ -322,11 +376,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				F1B8B5E12E55E64900C769C8 /* PhysicalExamListView.swift in Sources */,
+				DAD5B54F2E5707970046554F /* CDVisitFormView.swift in Sources */,
+				DAD5B54D2E5705A90046554F /* CDSymptomFormView.swift in Sources */,
 				F1DA3DAB2E5386CC001F8E4D /* CaseListView.swift in Sources */,
 				DAD5B53B2E56B58E0046554F /* PatientDetailScreen.swift in Sources */,
 				F1DA3DB82E5389BB001F8E4D /* NetworkRequestTestView.swift in Sources */,
+				DAD5B55A2E570EDF0046554F /* HealthFormsKit.swift in Sources */,
 				F1DA3DAD2E5386E3001F8E4D /* Components.swift in Sources */,
 				F1DA3DD92E54C6A3001F8E4D /* AddCaseEntryView.swift in Sources */,
+				DAD5B5402E56EDB60046554F /* CDNewRecordScreen.swift in Sources */,
 				F1B8B5D02E5583C500C769C8 /* ExamResultView.swift in Sources */,
 				F1DA3DA72E538690001F8E4D /* CaseListTabRoot.swift in Sources */,
 				F1DA3DBD2E54B954001F8E4D /* CaseCard.swift in Sources */,
@@ -336,16 +394,22 @@
 				F1DA3DCF2E54BC48001F8E4D /* Screen.swift in Sources */,
 				F1DA3DDE2E54D7EC001F8E4D /* ConfirmRecognizedCaseView.swift in Sources */,
 				F1DA3DD62E54BE84001F8E4D /* CardSizing.swift in Sources */,
+				DAD5B5552E570AAE0046554F /* CDSurgeryFormView.swift in Sources */,
 				F1DA3DA32E538649001F8E4D /* CaseItem.swift in Sources */,
+				DAD5B54B2E56F9900046554F /* CDReportFormView.swift in Sources */,
 				F1DA3D7D2E53575D001F8E4D /* AeraApp.swift in Sources */,
 				F1DA3DDB2E54CECD001F8E4D /* CaseUploadChoiceView.swift in Sources */,
 				F1DA3D942E535804001F8E4D /* HTTPClient.swift in Sources */,
 				DAD5B5392E56AFA70046554F /* CaseDetailScreen.swift in Sources */,
 				F1DA3DD42E54BD1D001F8E4D /* Metrics+.swift in Sources */,
+				DAD5B5472E56F5FE0046554F /* AddEventRecordView.swift in Sources */,
 				F1DA3DA52E538680001F8E4D /* Repository.swift in Sources */,
 				F1DA3DAF2E538710001F8E4D /* SeverityBadge.swift in Sources */,
+				DAD5B5422E56EEF00046554F /* CDNewFormView.swift in Sources */,
 				F1B8B5DB2E55E4F300C769C8 /* ExamItem.swift in Sources */,
+				DAD5B5512E57095C0046554F /* CDMedicationFormView.swift in Sources */,
 				F1DA3DD22E54BCF7001F8E4D /* View+.swift in Sources */,
+				DAD5B5572E570C510046554F /* CDFollowupFormView.swift in Sources */,
 				F1DA3DB52E538851001F8E4D /* SwiftUIView.swift in Sources */,
 				F1DA3DE22E54E169001F8E4D /* CaseUploadHostView.swift in Sources */,
 			);

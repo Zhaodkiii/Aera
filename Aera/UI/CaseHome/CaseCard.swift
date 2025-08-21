@@ -26,110 +26,118 @@ struct CaseCard: View {
     private var style: SeverityStyle { SeverityStyle(severity: item.severity) }
     
     var body: some View {
-        Button {
-            onTap?()
-        } label: {
-            VStack(alignment: .leading, spacing: 12) {
+        VStack(alignment: .leading, spacing: 12) {
+            Button {
+                onTap?()
+            } label: {
                 header
-                
-                // 主诉
-                HStack(alignment: .top, spacing: 6) {
-                    Image(systemName: "stethoscope")
-                        .font(.caption)
-                        .foregroundStyle(style.accent)
-                    Text("主诉：")
-                        .font(.subheadline).fontWeight(.semibold)
-                        .foregroundStyle(style.accent)
-                    Text(item.chiefComplaint)
-                        .font(.subheadline)
-                        .foregroundStyle(style.textStrong)
-                        .lineLimit(2)
-                }
-                
-                // 诊断
-                VStack(alignment: .leading, spacing: 4) {
-                    Text("诊断：")
-                        .font(.subheadline).fontWeight(.semibold)
-                        .foregroundStyle(style.textSecondary)
-                    Text(item.diagnosis)
-                        .font(.body.weight(.semibold))
-                        .foregroundStyle(style.textStrong)
-                        .lineLimit(2)
-                }
-                
-                // 症状
-                if !item.symptoms.isEmpty {
-                    VStack(alignment: .leading, spacing: 6) {
-                        Text("症状：")
-                            .font(.subheadline).foregroundStyle(style.textSecondary)
-                        TagCloud(
-                            items: limitedList(item.symptoms, max: maxChips),
-                            extraCount: max(0, item.symptoms.count - maxChips),
-                            tint: style.chipBG,
-                            fg: style.chipFG
-                        )
-                    }
-                }
-                
-                // 用药
-                if !item.medications.isEmpty {
-                    VStack(alignment: .leading, spacing: 6) {
-                        HStack(spacing: 6) {
-                            Image(systemName: "pills.fill")
-                            Text("用药：")
-                        }
-                        .font(.subheadline.weight(.semibold))
-                        .foregroundStyle(style.textSecondary)
-                        
-                        TagCloud(
-                            items: limitedList(item.medications, max: maxChips),
-                            extraCount: max(0, item.medications.count - maxChips),
-                            tint: Color.blue.opacity(0.12),
-                            fg: .blue
-                        )
-                    }
-                }
-                
-                // 备注 & 底部
-                VStack(alignment: .leading, spacing: 8) {
-                    if !item.notes.isEmpty {
-                        Text("“\(item.notes)”")
-                            .font(.footnote)
-                            .italic()
+            }
+            NavigationLink{
+                CaseDetailScreen(patient: .samplePatient, events: CDEventItem.sampleEvents)
+            } label: {
+                VStack(alignment: .leading, spacing: 12){
+       
+                    // 主诉
+                    HStack(alignment: .top, spacing: 6) {
+                        Image(systemName: "stethoscope")
+                            .font(.caption)
                             .foregroundStyle(style.accent)
+                        Text("主诉：")
+                            .font(.subheadline).fontWeight(.semibold)
+                            .foregroundStyle(style.accent)
+                        Text(item.chiefComplaint)
+                            .font(.subheadline)
+                            .foregroundStyle(style.textStrong)
+                            .lineLimit(2)
                     }
                     
-                    HStack {
-                        StatusPill(text: item.status.rawValue, tint: statusTint(item.status))
-                        Spacer()
-                        HStack(spacing: 6) {
-                            Image(systemName: "calendar")
-                            Text(dateText)
-                        }
-                        .font(.footnote)
-                        .foregroundStyle(style.textSecondary)
-                        .accessibilityElement(children: .combine)
-                        .accessibilityLabel("最后更新于 \(dateText)")
+                    // 诊断
+                    VStack(alignment: .leading, spacing: 4) {
+                        Text("诊断：")
+                            .font(.subheadline).fontWeight(.semibold)
+                            .foregroundStyle(style.textSecondary)
+                        Text(item.diagnosis)
+                            .font(.body.weight(.semibold))
+                            .foregroundStyle(style.textStrong)
+                            .lineLimit(2)
                     }
-                    .padding(.top, 2)
+                    
+                    // 症状
+                    if !item.symptoms.isEmpty {
+                        VStack(alignment: .leading, spacing: 6) {
+                            Text("症状：")
+                                .font(.subheadline).foregroundStyle(style.textSecondary)
+                            TagCloud(
+                                items: limitedList(item.symptoms, max: maxChips),
+                                extraCount: max(0, item.symptoms.count - maxChips),
+                                tint: style.chipBG,
+                                fg: style.chipFG
+                            )
+                        }
+                    }
+                    
+                    // 用药
+                    if !item.medications.isEmpty {
+                        VStack(alignment: .leading, spacing: 6) {
+                            HStack(spacing: 6) {
+                                Image(systemName: "pills.fill")
+                                Text("用药：")
+                            }
+                            .font(.subheadline.weight(.semibold))
+                            .foregroundStyle(style.textSecondary)
+                            
+                            TagCloud(
+                                items: limitedList(item.medications, max: maxChips),
+                                extraCount: max(0, item.medications.count - maxChips),
+                                tint: Color.blue.opacity(0.12),
+                                fg: .blue
+                            )
+                        }
+                    }
+                    
+                    // 备注 & 底部
+                    VStack(alignment: .leading, spacing: 8) {
+                        if !item.notes.isEmpty {
+                            Text("“\(item.notes)”")
+                                .font(.footnote)
+                                .italic()
+                                .foregroundStyle(style.accent)
+                        }
+                        
+                        HStack {
+                            StatusPill(text: item.status.rawValue, tint: statusTint(item.status))
+                            Spacer()
+                            HStack(spacing: 6) {
+                                Image(systemName: "calendar")
+                                Text(dateText)
+                            }
+                            .font(.footnote)
+                            .foregroundStyle(style.textSecondary)
+                            .accessibilityElement(children: .combine)
+                            .accessibilityLabel("最后更新于 \(dateText)")
+                        }
+                        .padding(.top, 2)
+                    }
+
                 }
             }
-            .padding(14)
-            .frame(height: 360)
-            .background(
-                RoundedRectangle(cornerRadius: 14, style: .continuous)
-                    .fill(style.cardBG)
-            )
-            .overlay(alignment: .leading) {
-                // 左侧竖条
-                Capsule().fill(style.accent).frame(width: 4)
-                    .padding(.vertical, 10)
-            }
-            .overlay(
-                RoundedRectangle(cornerRadius: 14, style: .continuous)
-                    .strokeBorder(style.border, lineWidth: 1)
-            )
         }
+        .padding(14)
+        .frame(height: 360)
+        .background(
+            RoundedRectangle(cornerRadius: 14, style: .continuous)
+                .fill(style.cardBG)
+        )
+        .overlay(alignment: .leading) {
+            // 左侧竖条
+            Capsule().fill(style.accent).frame(width: 4)
+                .padding(.vertical, 10)
+        }
+        .overlay(
+            RoundedRectangle(cornerRadius: 14, style: .continuous)
+                .strokeBorder(style.border, lineWidth: 1)
+        )
+
         .buttonStyle(.plain)
         .contextMenu {
             Button("编辑", systemImage: "square.and.pencil", action: {})

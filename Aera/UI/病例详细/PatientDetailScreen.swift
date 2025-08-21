@@ -504,6 +504,7 @@ struct FlexibleChips: View {
 
 struct PatientDetailScreen: View {
     @State private var selected: RecordKind = .all
+    @State private var isPush: Bool = false
     @State private var entries: [TimelineEntry] = demoEntries
 
     var body: some View {
@@ -562,8 +563,9 @@ struct PatientDetailScreen: View {
             }
 
             // Floating add button
-            Button {
+            NavigationLink {
                 // 新增记录 action
+                CDNewRecordScreen()
             } label: {
                 HStack(spacing: 8) {
                     Image(systemName: "plus")
@@ -579,7 +581,12 @@ struct PatientDetailScreen: View {
             .padding(.trailing, 20)
             .padding(.bottom, 90)
         }
-        .navigationBarHidden(true)
+     
+//        .navigationBarHidden(true)
+      
+//        .navigationDestination(isPresented: $siturw) {
+//            CDNewRecordScreen()
+//        }
     }
 }
 
