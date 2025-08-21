@@ -40,8 +40,10 @@ enum DesignTokens {
     static func subtleShadow(_ scheme: ColorScheme) -> Color {
         scheme == .dark ? Color.black.opacity(0.45) : Color.black.opacity(0.08)
     }
+
     // 聚焦与错误态
     static let focusRing = Color.accentColor
+    
     static let error = Color(.systemRed)
 }
 
@@ -221,5 +223,35 @@ struct BorderButtonStyle: ButtonStyle {
             .background(DesignTokens.cardBG(scheme))
             .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
             .overlay(RoundedRectangle(cornerRadius: 14, style: .continuous).stroke(DesignTokens.border(scheme), lineWidth: 1))
+    }
+}
+
+
+
+// 输入类控件统一外观
+struct InputFieldChrome: ViewModifier {
+    let isFocused: Bool
+    let isError: Bool
+    let scheme: ColorScheme
+
+    func body(content: Content) -> some View {
+        content
+            .padding(.horizontal, 12)
+            .frame(height: 44)
+            .background(DesignTokens.fieldBG(scheme))
+            .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
+            .overlay(
+                RoundedRectangle(cornerRadius: 12, style: .continuous)
+                    .stroke(isError ? DesignTokens.error : (isFocused ? DesignTokens.focusRing : DesignTokens.border(scheme)), lineWidth: isFocused || isError ? 1.5 : 1)
+            )
+            .shadow(color: DesignTokens.subtleShadow(scheme), radius: isFocused ? 8 : 4, y: 2)
+    }
+}
+
+
+// MARK: - View 扩展，方便调用
+public extension View {
+    func inputFieldChrome(isFocused: Bool, isError: Bool, scheme: ColorScheme) -> some View {
+        self.modifier(InputFieldChrome(isFocused: isFocused, isError: isError, scheme: scheme))
     }
 }

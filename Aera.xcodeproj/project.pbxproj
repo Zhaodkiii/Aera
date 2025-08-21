@@ -19,6 +19,17 @@
 		DAD5B5552E570AAE0046554F /* CDSurgeryFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD5B5542E570AAE0046554F /* CDSurgeryFormView.swift */; };
 		DAD5B5572E570C510046554F /* CDFollowupFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD5B5562E570C510046554F /* CDFollowupFormView.swift */; };
 		DAD5B55A2E570EDF0046554F /* HealthFormsKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD5B5592E570EDF0046554F /* HealthFormsKit.swift */; };
+		F117E8602E57804600380807 /* SectionTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F117E85F2E57804600380807 /* SectionTitle.swift */; };
+		F12DDBE52E575D5E001E8D91 /* FormBottomBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F12DDBE42E575D5E001E8D91 /* FormBottomBar.swift */; };
+		F12DDBE92E576087001E8D91 /* FormBadge.swift in Resources */ = {isa = PBXBuildFile; fileRef = F12DDBE82E576087001E8D91 /* FormBadge.swift */; };
+		F12DDBEB2E576593001E8D91 /* GridTwo.swift in Resources */ = {isa = PBXBuildFile; fileRef = F12DDBEA2E576593001E8D91 /* GridTwo.swift */; };
+		F12DDBED2E576696001E8D91 /* FormDateTimeRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F12DDBEC2E576696001E8D91 /* FormDateTimeRow.swift */; };
+		F12DDBEF2E576984001E8D91 /* FormTextFieldRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F12DDBEE2E576984001E8D91 /* FormTextFieldRow.swift */; };
+		F12DDBF12E576BB7001E8D91 /* FormTextArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = F12DDBF02E576BB7001E8D91 /* FormTextArea.swift */; };
+		F12DDBF32E5770A3001E8D91 /* FormLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F12DDBF22E5770A3001E8D91 /* FormLabel.swift */; };
+		F12DDBF52E577C15001E8D91 /* VisitDivider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F12DDBF42E577C15001E8D91 /* VisitDivider.swift */; };
+		F12DDBF92E577CDB001E8D91 /* SymptomFieldChrome.swift in Sources */ = {isa = PBXBuildFile; fileRef = F12DDBF82E577CDB001E8D91 /* SymptomFieldChrome.swift */; };
+		F12DDBFB2E577D70001E8D91 /* SymptomCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F12DDBFA2E577D70001E8D91 /* SymptomCard.swift */; };
 		F1B8B5D02E5583C500C769C8 /* ExamResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B8B5CF2E5583C500C769C8 /* ExamResultView.swift */; };
 		F1B8B5DB2E55E4F300C769C8 /* ExamItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B8B5DA2E55E4F300C769C8 /* ExamItem.swift */; };
 		F1B8B5E12E55E64900C769C8 /* PhysicalExamListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B8B5E02E55E64900C769C8 /* PhysicalExamListView.swift */; };
@@ -60,6 +71,17 @@
 		DAD5B5542E570AAE0046554F /* CDSurgeryFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDSurgeryFormView.swift; sourceTree = "<group>"; };
 		DAD5B5562E570C510046554F /* CDFollowupFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDFollowupFormView.swift; sourceTree = "<group>"; };
 		DAD5B5592E570EDF0046554F /* HealthFormsKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthFormsKit.swift; sourceTree = "<group>"; };
+		F117E85F2E57804600380807 /* SectionTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionTitle.swift; sourceTree = "<group>"; };
+		F12DDBE42E575D5E001E8D91 /* FormBottomBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormBottomBar.swift; sourceTree = "<group>"; };
+		F12DDBE82E576087001E8D91 /* FormBadge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormBadge.swift; sourceTree = "<group>"; };
+		F12DDBEA2E576593001E8D91 /* GridTwo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridTwo.swift; sourceTree = "<group>"; };
+		F12DDBEC2E576696001E8D91 /* FormDateTimeRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormDateTimeRow.swift; sourceTree = "<group>"; };
+		F12DDBEE2E576984001E8D91 /* FormTextFieldRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormTextFieldRow.swift; sourceTree = "<group>"; };
+		F12DDBF02E576BB7001E8D91 /* FormTextArea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormTextArea.swift; sourceTree = "<group>"; };
+		F12DDBF22E5770A3001E8D91 /* FormLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormLabel.swift; sourceTree = "<group>"; };
+		F12DDBF42E577C15001E8D91 /* VisitDivider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitDivider.swift; sourceTree = "<group>"; };
+		F12DDBF82E577CDB001E8D91 /* SymptomFieldChrome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymptomFieldChrome.swift; sourceTree = "<group>"; };
+		F12DDBFA2E577D70001E8D91 /* SymptomCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymptomCard.swift; sourceTree = "<group>"; };
 		F1B8B5CF2E5583C500C769C8 /* ExamResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamResultView.swift; sourceTree = "<group>"; };
 		F1B8B5DA2E55E4F300C769C8 /* ExamItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamItem.swift; sourceTree = "<group>"; };
 		F1B8B5E02E55E64900C769C8 /* PhysicalExamListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhysicalExamListView.swift; sourceTree = "<group>"; };
@@ -147,9 +169,36 @@
 		DAD5B5582E570ED10046554F /* 新增记录3 */ = {
 			isa = PBXGroup;
 			children = (
-				DAD5B5592E570EDF0046554F /* HealthFormsKit.swift */,
+				F12DDBE62E576064001E8D91 /* HealthFormsKit */,
 			);
 			path = "新增记录3";
+			sourceTree = "<group>";
+		};
+		F12DDBE62E576064001E8D91 /* HealthFormsKit */ = {
+			isa = PBXGroup;
+			children = (
+				F12DDBE72E57607C001E8D91 /* Primitives */,
+				DAD5B5592E570EDF0046554F /* HealthFormsKit.swift */,
+			);
+			path = HealthFormsKit;
+			sourceTree = "<group>";
+		};
+		F12DDBE72E57607C001E8D91 /* Primitives */ = {
+			isa = PBXGroup;
+			children = (
+				F117E85F2E57804600380807 /* SectionTitle.swift */,
+				F12DDBFA2E577D70001E8D91 /* SymptomCard.swift */,
+				F12DDBF82E577CDB001E8D91 /* SymptomFieldChrome.swift */,
+				F12DDBF42E577C15001E8D91 /* VisitDivider.swift */,
+				F12DDBF22E5770A3001E8D91 /* FormLabel.swift */,
+				F12DDBEA2E576593001E8D91 /* GridTwo.swift */,
+				F12DDBE82E576087001E8D91 /* FormBadge.swift */,
+				F12DDBE42E575D5E001E8D91 /* FormBottomBar.swift */,
+				F12DDBEC2E576696001E8D91 /* FormDateTimeRow.swift */,
+				F12DDBEE2E576984001E8D91 /* FormTextFieldRow.swift */,
+				F12DDBF02E576BB7001E8D91 /* FormTextArea.swift */,
+			);
+			path = Primitives;
 			sourceTree = "<group>";
 		};
 		F1B8B5D52E55E38F00C769C8 /* Component */ = {
@@ -365,6 +414,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				F1DA3D812E53575E001F8E4D /* Assets.xcassets in Resources */,
+				F12DDBEB2E576593001E8D91 /* GridTwo.swift in Resources */,
+				F12DDBE92E576087001E8D91 /* FormBadge.swift in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -381,6 +432,7 @@
 				F1DA3DAB2E5386CC001F8E4D /* CaseListView.swift in Sources */,
 				DAD5B53B2E56B58E0046554F /* PatientDetailScreen.swift in Sources */,
 				F1DA3DB82E5389BB001F8E4D /* NetworkRequestTestView.swift in Sources */,
+				F12DDBEF2E576984001E8D91 /* FormTextFieldRow.swift in Sources */,
 				DAD5B55A2E570EDF0046554F /* HealthFormsKit.swift in Sources */,
 				F1DA3DAD2E5386E3001F8E4D /* Components.swift in Sources */,
 				F1DA3DD92E54C6A3001F8E4D /* AddCaseEntryView.swift in Sources */,
@@ -388,13 +440,19 @@
 				F1B8B5D02E5583C500C769C8 /* ExamResultView.swift in Sources */,
 				F1DA3DA72E538690001F8E4D /* CaseListTabRoot.swift in Sources */,
 				F1DA3DBD2E54B954001F8E4D /* CaseCard.swift in Sources */,
+				F117E8602E57804600380807 /* SectionTitle.swift in Sources */,
+				F12DDBF92E577CDB001E8D91 /* SymptomFieldChrome.swift in Sources */,
 				F1DA3DE02E54DC60001F8E4D /* RecognizeProcessingView.swift in Sources */,
 				F1DA3DB12E538725001F8E4D /* FlowLayout.swift in Sources */,
 				F1DA3D7F2E53575D001F8E4D /* ContentView.swift in Sources */,
 				F1DA3DCF2E54BC48001F8E4D /* Screen.swift in Sources */,
+				F12DDBFB2E577D70001E8D91 /* SymptomCard.swift in Sources */,
+				F12DDBF32E5770A3001E8D91 /* FormLabel.swift in Sources */,
+				F12DDBF52E577C15001E8D91 /* VisitDivider.swift in Sources */,
 				F1DA3DDE2E54D7EC001F8E4D /* ConfirmRecognizedCaseView.swift in Sources */,
 				F1DA3DD62E54BE84001F8E4D /* CardSizing.swift in Sources */,
 				DAD5B5552E570AAE0046554F /* CDSurgeryFormView.swift in Sources */,
+				F12DDBE52E575D5E001E8D91 /* FormBottomBar.swift in Sources */,
 				F1DA3DA32E538649001F8E4D /* CaseItem.swift in Sources */,
 				DAD5B54B2E56F9900046554F /* CDReportFormView.swift in Sources */,
 				F1DA3D7D2E53575D001F8E4D /* AeraApp.swift in Sources */,
@@ -409,9 +467,11 @@
 				F1B8B5DB2E55E4F300C769C8 /* ExamItem.swift in Sources */,
 				DAD5B5512E57095C0046554F /* CDMedicationFormView.swift in Sources */,
 				F1DA3DD22E54BCF7001F8E4D /* View+.swift in Sources */,
+				F12DDBED2E576696001E8D91 /* FormDateTimeRow.swift in Sources */,
 				DAD5B5572E570C510046554F /* CDFollowupFormView.swift in Sources */,
 				F1DA3DB52E538851001F8E4D /* SwiftUIView.swift in Sources */,
 				F1DA3DE22E54E169001F8E4D /* CaseUploadHostView.swift in Sources */,
+				F12DDBF12E576BB7001E8D91 /* FormTextArea.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
