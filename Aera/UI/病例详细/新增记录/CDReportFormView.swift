@@ -86,27 +86,17 @@ struct CDReportFormView: View {
 
                         VisitDivider(color: DesignTokens.border(scheme))
 
-                        VStack(alignment: .leading, spacing: 8) {
-                            FormLabel("报告名称")
-                            TextField("如：血常规检查报告", text: $form.reportName.orEmpty())
-                                .textInputAutocapitalization(.never)
-                                .focused($focusedField, equals: .reportName)
-                                .modifier(InputFieldChrome(isFocused: focusedField == .reportName, isError: false, scheme: scheme))
-                        }
+                        FormTextFieldRow(
+                          label: "报告名称",
+                          required: false,
+                          placeholder: "如：血常规检查报告",
+                          text: $form.reportName.orEmpty(),
+                          submitLabel: .next,
+                          textInputAutocapitalization: .never
+                        )
+                        
+                        FormPicker("检查类型", selection: $form.checkType, scheme: scheme)
 
-                        VStack(alignment: .leading, spacing: 8) {
-                            FormLabel("检查类型")
-                            Picker(selection: $form.checkType) {
-                                Text("未选择").tag(Optional<CheckType>.none)
-                                ForEach(CheckType.allCases) { t in
-                                    Text(t.rawValue).tag(Optional(t))
-                                }
-                            } label: {
-                                HStack { Text(form.checkType?.rawValue ?? "选择类型"); Spacer(); Image(systemName: "chevron.down").opacity(0.5) }
-                            }
-                            .pickerStyle(.menu)
-                            .modifier(InputFieldChrome(isFocused: false, isError: false, scheme: scheme))
-                        }
 
                         FormTextArea("检查结论",
                                      placeholder: "检查结论...",

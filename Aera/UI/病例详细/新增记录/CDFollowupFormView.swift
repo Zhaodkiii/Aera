@@ -80,6 +80,10 @@ struct CDFollowupFormView: View {
                                      text: $form.detail,
                                      scheme: scheme)
                         
+                        
+                        // FollowMethod: String, CaseIterable, Hashable (Identifiable 可有可无)
+                        FormPicker("随访方式", selection: $form.method, scheme: scheme)
+                        
                         VStack(alignment: .leading, spacing: 8) {
                             FormLabel("随访方式")
                             Picker(selection: $form.method) {

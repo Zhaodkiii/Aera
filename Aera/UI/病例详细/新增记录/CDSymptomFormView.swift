@@ -19,10 +19,10 @@ struct CDSymptomFormView: View {
     }
 
     enum Severity: String, CaseIterable, Identifiable {
-        case mild = "轻度"
-        case moderate = "中度"
-        case severe = "重度"
-        case critical = "危重"
+        case mild = "🙂 轻度"
+        case moderate = "😕 中度"
+        case severe = "😣 重度"
+        case critical = "🆘 危重"
         var id: String { rawValue }
         var icon: String {
             switch self {
@@ -83,23 +83,8 @@ struct CDSymptomFormView: View {
                                      text: $form.detail,
                                      scheme: scheme)
                         
-                        VStack(alignment: .leading, spacing: 8) {
-                            FormLabel("症状严重程度")
-                            Picker(selection: $form.severity) {
-                                Text("选择严重程度").tag(Optional<Severity>.none)
-                                ForEach(Severity.allCases) { s in
-                                    Text("\(s.icon) \(s.rawValue)").tag(Optional(s))
-                                }
-                            } label: {
-                                HStack {
-                                    Text(form.severity?.rawValue ?? "选择严重程度")
-                                    Spacer(minLength: 8)
-                                    Image(systemName: "chevron.down").opacity(0.5)
-                                }
-                            }
-                            .pickerStyle(.menu)
-                            .inputFieldChrome(isFocused: false, isError: false, scheme: scheme)
-                        }
+                        FormPicker("症状严重程度", selection: $form.severity, scheme: scheme)
+
                     }
 
                     Spacer(minLength: 16)

@@ -255,3 +255,56 @@ public extension View {
         self.modifier(InputFieldChrome(isFocused: isFocused, isError: isError, scheme: scheme))
     }
 }
+
+
+import SwiftUI
+
+// HealthFormsKit • Fields
+// 通用选择器（下拉菜单形式，适配任意 String RawRepresentable 的枚举）
+public struct FormPicker<T: CaseIterable & RawRepresentable & Hashable>: View where T.RawValue == String {
+    private let label: String
+    private let required: Bool
+    private let placeholder: String
+    @Binding private var selection: T?
+    private let scheme: ColorScheme
+
+    public init(
+        _ label: String,
+        required: Bool = false,
+        placeholder: String? = nil,
+        selection: Binding<T?>,
+        scheme: ColorScheme
+    ) {
+        self.label = label
+        self.required = required
+        self.placeholder = placeholder ?? "请选择\(label)"
+        self._selection = selection
+        self.scheme = scheme
+    }
+
+    public var body: some View {
+        VStack(alignment: .leading, spacing: 8) {
+            FormLabel(label, required: required)
+
+            let isError = required && selection == nil
+
+            Picker(selection: $selection) {
+                Text(placeholder).tag(Optional<T>.none)
+                // 关键修正：把 allCases 包成 Array 并用 id: \.self
+                ForEach(Array(T.allCases), id: \.self) { option in
+                    Text(option.rawValue).tag(Optional(option))
+                }
+            } label: {
+                HStack {
+                    Text(selection?.rawValue ?? placeholder)
+                    Spacer(minLength: 8)
+                    Image(systemName: "chevron.down").opacity(0.5)
+                }
+            }
+            .pickerStyle(.menu)
+            .formFieldChrome(isFocused: false, isError: isError)
+//            .modifier(InputFieldChrome(isFocused: false, isError: false, scheme: scheme))
+
+        }
+    }
+}

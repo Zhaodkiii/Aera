@@ -57,7 +57,6 @@ struct CDVisitFormView: View {
                     FormBadge("🏥 就医", color: Color.green)
                     SymptomCard(scheme: scheme) {
                         SectionTitle(icon: "calendar", text: "基本信息")
-
                         
                         FormDateTimeRow(date: $form.date, time: $form.time)
                         
@@ -81,40 +80,26 @@ struct CDVisitFormView: View {
 
                         VisitDivider(color: DesignTokens.border(scheme))
 
-                        VStack(alignment: .leading, spacing: 8) {
-                            FormLabel("医院名称")
-                            TextField("如：北京协和医院", text: $form.hospital.orEmpty())
-                                .textInputAutocapitalization(.never)
-                                .focused($focus, equals: .hospital)
-                                .modifier(InputFieldChrome(isFocused: focus == .hospital, isError: false, scheme: scheme))
-                        }
+                       
+                        FormTextFieldRow(
+                          label: "医院名称",
+                          required: false,
+                          placeholder: "如：北京协和医院",
+                          text: $form.hospital.orEmpty(),
+                          submitLabel: .next,
+                          textInputAutocapitalization: .never
+                        )
+                        FormTextFieldRow(
+                          label: "科室",
+                          required: false,
+                          placeholder: "如：心内科",
+                          text: $form.department.orEmpty(),
+                          submitLabel: .next,
+                          textInputAutocapitalization: .never
+                        )
 
-                        VStack(alignment: .leading, spacing: 8) {
-                            FormLabel("科室")
-                            TextField("如：心内科", text: $form.department.orEmpty())
-                                .textInputAutocapitalization(.never)
-                                .focused($focus, equals: .department)
-                                .modifier(InputFieldChrome(isFocused: focus == .department, isError: false, scheme: scheme))
-                        }
+                        FormPicker("就诊类型", selection: $form.visitType, scheme: scheme)
 
-                        VStack(alignment: .leading, spacing: 8) {
-                            FormLabel("就诊类型")
-                            Picker(selection: $form.visitType) {
-                                Text("选择就诊类型").tag(Optional<VisitType>.none)
-                                ForEach(VisitType.allCases) { t in
-                                    Text(t.rawValue).tag(Optional(t))
-                                }
-                            } label: {
-                                HStack {
-                                    Text(form.visitType?.rawValue ?? "选择就诊类型")
-                                    Spacer(minLength: 8)
-                                    Image(systemName: "chevron.down").opacity(0.5)
-                                }
-                            }
-                            .pickerStyle(.menu)
-                            .modifier(InputFieldChrome(isFocused: false, isError: false, scheme: scheme))
-                        }
-//
                         FormTextArea("医生诊断",
                                      placeholder: "医生的诊断结果...",
                                      required: false,
@@ -168,7 +153,7 @@ struct CDVisitFormView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
             NavigationView { CDVisitFormView { _ in } }.preferredColorScheme(.light)
-            NavigationView { CDVisitFormView { _ in } }.preferredColorScheme(.dark)
+//            NavigationView { CDVisitFormView { _ in } }.preferredColorScheme(.dark)
         }
     }
 }

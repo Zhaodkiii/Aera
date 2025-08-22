@@ -82,35 +82,25 @@ struct CDSurgeryFormView: View {
                         
                         VisitDivider(color: DesignTokens.border(scheme))
 
-                        VStack(alignment: .leading, spacing: 8) {
-                            FormLabel("手术名称")
-                            TextField("手术名称", text: $form.surgeryName.orEmpty())
-                                .textInputAutocapitalization(.never)
-                                .focused($focus, equals: .surgeryName)
-                                .inputFieldChrome(isFocused: false, isError: false, scheme: scheme)
-                        }
+                        FormTextFieldRow(
+                          label: "手术名称",
+                          required: false,
+                          placeholder: "手术名称",
+                          text: $form.surgeryName.orEmpty(),
+                          submitLabel: .next,
+                          textInputAutocapitalization: .never
+                        )
+                        FormTextFieldRow(
+                          label: "手术医生",
+                          required: false,
+                          placeholder: "主刀医生姓名",
+                          text: $form.surgeon.orEmpty(),
+                          submitLabel: .next,
+                          textInputAutocapitalization: .never
+                        )
+                        
+                        FormPicker("麻醉方式", selection: $form.anesthesia, scheme: scheme)
 
-                        VStack(alignment: .leading, spacing: 8) {
-                            FormLabel("手术医生")
-                            TextField("主刀医生姓名", text: $form.surgeon.orEmpty())
-                                .textInputAutocapitalization(.words)
-                                .focused($focus, equals: .surgeon)
-                                .inputFieldChrome(isFocused: false, isError: false, scheme: scheme)
-                        }
-
-                        VStack(alignment: .leading, spacing: 8) {
-                            FormLabel("麻醉方式")
-                            Picker(selection: $form.anesthesia) {
-                                Text("选择麻醉方式").tag(Optional<Anesthesia>.none)
-                                ForEach(Anesthesia.allCases) { a in
-                                    Text(a.rawValue).tag(Optional(a))
-                                }
-                            } label: {
-                                HStack { Text(form.anesthesia?.rawValue ?? "选择麻醉方式"); Spacer(); Image(systemName: "chevron.down").opacity(0.5) }
-                            }
-                            .pickerStyle(.menu)
-                            .inputFieldChrome(isFocused: false, isError: false, scheme: scheme)
-                        }
                         
                         FormTextArea("术后情况",
                                      placeholder: "手术效果、并发症或注意事项...",
