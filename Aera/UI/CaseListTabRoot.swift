@@ -25,7 +25,8 @@ struct CaseListTabRoot: View {
                 
             }
             .navigationDestination(isPresented: $isPush) {
-                       AddCaseEntryView()
+//                       AddCaseEntryView()
+                DosingPlannerView()
                    }
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {

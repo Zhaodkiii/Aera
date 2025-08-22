@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DAB5A84C2E5861ED008FAE6D /* DosingPlannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB5A84B2E5861EB008FAE6D /* DosingPlannerView.swift */; };
+		DAB5A84E2E58655A008FAE6D /* MVNotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB5A84D2E58655A008FAE6D /* MVNotificationCenter.swift */; };
 		DAD5B5392E56AFA70046554F /* CaseDetailScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD5B5382E56AFA70046554F /* CaseDetailScreen.swift */; };
 		DAD5B53B2E56B58E0046554F /* PatientDetailScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD5B53A2E56B58E0046554F /* PatientDetailScreen.swift */; };
 		DAD5B5402E56EDB60046554F /* CDNewRecordScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD5B53F2E56EDB60046554F /* CDNewRecordScreen.swift */; };
@@ -59,6 +61,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		DAB5A84B2E5861EB008FAE6D /* DosingPlannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DosingPlannerView.swift; sourceTree = "<group>"; };
+		DAB5A84D2E58655A008FAE6D /* MVNotificationCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MVNotificationCenter.swift; sourceTree = "<group>"; };
 		DAD5B5382E56AFA70046554F /* CaseDetailScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaseDetailScreen.swift; sourceTree = "<group>"; };
 		DAD5B53A2E56B58E0046554F /* PatientDetailScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientDetailScreen.swift; sourceTree = "<group>"; };
 		DAD5B53F2E56EDB60046554F /* CDNewRecordScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDNewRecordScreen.swift; sourceTree = "<group>"; };
@@ -134,6 +138,8 @@
 		DAD5B5372E56AF920046554F /* 病例详细 */ = {
 			isa = PBXGroup;
 			children = (
+				DAB5A84D2E58655A008FAE6D /* MVNotificationCenter.swift */,
+				DAB5A84B2E5861EB008FAE6D /* DosingPlannerView.swift */,
 				DAD5B5582E570ED10046554F /* 新增记录3 */,
 				DAD5B5432E56F5E30046554F /* 新增记录2 */,
 				DAD5B53C2E56ED940046554F /* 新增记录 */,
@@ -444,6 +450,7 @@
 				F12DDBF92E577CDB001E8D91 /* SymptomFieldChrome.swift in Sources */,
 				F1DA3DE02E54DC60001F8E4D /* RecognizeProcessingView.swift in Sources */,
 				F1DA3DB12E538725001F8E4D /* FlowLayout.swift in Sources */,
+				DAB5A84C2E5861ED008FAE6D /* DosingPlannerView.swift in Sources */,
 				F1DA3D7F2E53575D001F8E4D /* ContentView.swift in Sources */,
 				F1DA3DCF2E54BC48001F8E4D /* Screen.swift in Sources */,
 				F12DDBFB2E577D70001E8D91 /* SymptomCard.swift in Sources */,
@@ -457,6 +464,7 @@
 				DAD5B54B2E56F9900046554F /* CDReportFormView.swift in Sources */,
 				F1DA3D7D2E53575D001F8E4D /* AeraApp.swift in Sources */,
 				F1DA3DDB2E54CECD001F8E4D /* CaseUploadChoiceView.swift in Sources */,
+				DAB5A84E2E58655A008FAE6D /* MVNotificationCenter.swift in Sources */,
 				F1DA3D942E535804001F8E4D /* HTTPClient.swift in Sources */,
 				DAD5B5392E56AFA70046554F /* CaseDetailScreen.swift in Sources */,
 				F1DA3DD42E54BD1D001F8E4D /* Metrics+.swift in Sources */,
