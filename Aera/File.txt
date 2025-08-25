@@ -1,0 +1,9 @@
+<key>URL types</key>
+<array>
+    <dict>
+        <key>URL Schemes</key>
+        <array>
+            <string>com.googleusercontent.apps.203852779171-8esqsrqpotkn5sr3neidqj2gf6kt2tou</string>
+        </array>
+    </dict>
+</array>

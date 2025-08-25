@@ -9,6 +9,9 @@ import SwiftUI
 
 @main
 struct AeraApp: App {
+    init() {
+         FirstRunGuard.cleanKeychainIfFreshInstall()
+     }
     var body: some Scene {
         WindowGroup {
             ContentView()

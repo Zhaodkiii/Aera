@@ -32,6 +32,25 @@
 		F12DDBF52E577C15001E8D91 /* VisitDivider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F12DDBF42E577C15001E8D91 /* VisitDivider.swift */; };
 		F12DDBF92E577CDB001E8D91 /* SymptomFieldChrome.swift in Sources */ = {isa = PBXBuildFile; fileRef = F12DDBF82E577CDB001E8D91 /* SymptomFieldChrome.swift */; };
 		F12DDBFB2E577D70001E8D91 /* SymptomCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F12DDBFA2E577D70001E8D91 /* SymptomCard.swift */; };
+		F18284012E5957830056AF8D /* EmailRegisterVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F18284002E5957830056AF8D /* EmailRegisterVM.swift */; };
+		F18284032E5957910056AF8D /* EmailRegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F18284022E5957910056AF8D /* EmailRegisterView.swift */; };
+		F18284052E596B830056AF8D /* DeviceID.swift in Sources */ = {isa = PBXBuildFile; fileRef = F18284042E596B830056AF8D /* DeviceID.swift */; };
+		F1A6716C2E58B97E0057127C /* APIConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A6716B2E58B9780057127C /* APIConfig.swift */; };
+		F1A6716E2E58B98B0057127C /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A6716D2E58B98B0057127C /* Keychain.swift */; };
+		F1A671702E58B9AE0057127C /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A6716F2E58B9AE0057127C /* APIError.swift */; };
+		F1A671762E58B9E30057127C /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A671752E58B9E30057127C /* APIClient.swift */; };
+		F1A671782E58B9FF0057127C /* CaseListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A671772E58B9FF0057127C /* CaseListVM.swift */; };
+		F1A6717A2E58BA4D0057127C /* CaseaListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A671792E58BA4D0057127C /* CaseaListView.swift */; };
+		F1A6717C2E58C2E20057127C /* APIClient+Register.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A6717B2E58C2E00057127C /* APIClient+Register.swift */; };
+		F1A671802E58C2FD0057127C /* RegisterVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A6717F2E58C2FD0057127C /* RegisterVM.swift */; };
+		F1A671842E58D3A20057127C /* APIClient+Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A671832E58D3A20057127C /* APIClient+Auth.swift */; };
+		F1A671862E58D3BF0057127C /* AuthHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A671852E58D3BF0057127C /* AuthHelpers.swift */; };
+		F1A671892E58D48B0057127C /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = F1A671882E58D48B0057127C /* GoogleSignIn */; };
+		F1A6718B2E58D48B0057127C /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = F1A6718A2E58D48B0057127C /* GoogleSignInSwift */; };
+		F1A6718D2E58D4A60057127C /* LoginVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A6718C2E58D4A60057127C /* LoginVM.swift */; };
+		F1A6718F2E58D4AE0057127C /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A6718E2E58D4AE0057127C /* LoginView.swift */; };
+		F1A671912E58D5C10057127C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F1A671902E58D5C10057127C /* GoogleService-Info.plist */; };
+		F1A671952E58DCC70057127C /* File.txt in Resources */ = {isa = PBXBuildFile; fileRef = F1A671942E58DCC70057127C /* File.txt */; };
 		F1B8B5D02E5583C500C769C8 /* ExamResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B8B5CF2E5583C500C769C8 /* ExamResultView.swift */; };
 		F1B8B5DB2E55E4F300C769C8 /* ExamItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B8B5DA2E55E4F300C769C8 /* ExamItem.swift */; };
 		F1B8B5E12E55E64900C769C8 /* PhysicalExamListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B8B5E02E55E64900C769C8 /* PhysicalExamListView.swift */; };
@@ -86,6 +105,24 @@
 		F12DDBF42E577C15001E8D91 /* VisitDivider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitDivider.swift; sourceTree = "<group>"; };
 		F12DDBF82E577CDB001E8D91 /* SymptomFieldChrome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymptomFieldChrome.swift; sourceTree = "<group>"; };
 		F12DDBFA2E577D70001E8D91 /* SymptomCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymptomCard.swift; sourceTree = "<group>"; };
+		F18284002E5957830056AF8D /* EmailRegisterVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailRegisterVM.swift; sourceTree = "<group>"; };
+		F18284022E5957910056AF8D /* EmailRegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailRegisterView.swift; sourceTree = "<group>"; };
+		F18284042E596B830056AF8D /* DeviceID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceID.swift; sourceTree = "<group>"; };
+		F1A6716B2E58B9780057127C /* APIConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConfig.swift; sourceTree = "<group>"; };
+		F1A6716D2E58B98B0057127C /* Keychain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keychain.swift; sourceTree = "<group>"; };
+		F1A6716F2E58B9AE0057127C /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
+		F1A671752E58B9E30057127C /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		F1A671772E58B9FF0057127C /* CaseListVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaseListVM.swift; sourceTree = "<group>"; };
+		F1A671792E58BA4D0057127C /* CaseaListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaseaListView.swift; sourceTree = "<group>"; };
+		F1A6717B2E58C2E00057127C /* APIClient+Register.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "APIClient+Register.swift"; sourceTree = "<group>"; };
+		F1A6717F2E58C2FD0057127C /* RegisterVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterVM.swift; sourceTree = "<group>"; };
+		F1A671812E58D0300057127C /* Aera.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Aera.entitlements; sourceTree = "<group>"; };
+		F1A671832E58D3A20057127C /* APIClient+Auth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "APIClient+Auth.swift"; sourceTree = "<group>"; };
+		F1A671852E58D3BF0057127C /* AuthHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthHelpers.swift; sourceTree = "<group>"; };
+		F1A6718C2E58D4A60057127C /* LoginVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVM.swift; sourceTree = "<group>"; };
+		F1A6718E2E58D4AE0057127C /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		F1A671902E58D5C10057127C /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		F1A671942E58DCC70057127C /* File.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = File.txt; sourceTree = "<group>"; };
 		F1B8B5CF2E5583C500C769C8 /* ExamResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamResultView.swift; sourceTree = "<group>"; };
 		F1B8B5DA2E55E4F300C769C8 /* ExamItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamItem.swift; sourceTree = "<group>"; };
 		F1B8B5E02E55E64900C769C8 /* PhysicalExamListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhysicalExamListView.swift; sourceTree = "<group>"; };
@@ -129,6 +166,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F1A671892E58D48B0057127C /* GoogleSignIn in Frameworks */,
+				F1A6718B2E58D48B0057127C /* GoogleSignInSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -207,6 +246,34 @@
 			path = Primitives;
 			sourceTree = "<group>";
 		};
+		F1A6716A2E58B96B0057127C /* django */ = {
+			isa = PBXGroup;
+			children = (
+				F1A6717F2E58C2FD0057127C /* RegisterVM.swift */,
+				F1A6717B2E58C2E00057127C /* APIClient+Register.swift */,
+				F1A671772E58B9FF0057127C /* CaseListVM.swift */,
+				F1A671752E58B9E30057127C /* APIClient.swift */,
+				F1A6716F2E58B9AE0057127C /* APIError.swift */,
+				F1A6716D2E58B98B0057127C /* Keychain.swift */,
+				F1A6716B2E58B9780057127C /* APIConfig.swift */,
+				F1A671792E58BA4D0057127C /* CaseaListView.swift */,
+			);
+			path = django;
+			sourceTree = "<group>";
+		};
+		F1A671822E58D3940057127C /* login */ = {
+			isa = PBXGroup;
+			children = (
+				F18284022E5957910056AF8D /* EmailRegisterView.swift */,
+				F18284002E5957830056AF8D /* EmailRegisterVM.swift */,
+				F1A6718E2E58D4AE0057127C /* LoginView.swift */,
+				F1A6718C2E58D4A60057127C /* LoginVM.swift */,
+				F1A671832E58D3A20057127C /* APIClient+Auth.swift */,
+				F1A671852E58D3BF0057127C /* AuthHelpers.swift */,
+			);
+			path = login;
+			sourceTree = "<group>";
+		};
 		F1B8B5D52E55E38F00C769C8 /* Component */ = {
 			isa = PBXGroup;
 			children = (
@@ -252,7 +319,10 @@
 		F1DA3D8A2E535773001F8E4D /* Aera */ = {
 			isa = PBXGroup;
 			children = (
+				F1A671902E58D5C10057127C /* GoogleService-Info.plist */,
+				F1A671812E58D0300057127C /* Aera.entitlements */,
 				F1DA3DDC2E54D0F8001F8E4D /* Info.plist */,
+				F1A671942E58DCC70057127C /* File.txt */,
 				F1DA3D912E5357EE001F8E4D /* Networking */,
 				F1DA3D902E53578B001F8E4D /* UI */,
 				F1DA3D8E2E535780001F8E4D /* Preview Content */,
@@ -284,6 +354,9 @@
 		F1DA3D912E5357EE001F8E4D /* Networking */ = {
 			isa = PBXGroup;
 			children = (
+				F18284042E596B830056AF8D /* DeviceID.swift */,
+				F1A671822E58D3940057127C /* login */,
+				F1A6716A2E58B96B0057127C /* django */,
 				F1DA3DB62E5389B2001F8E4D /* Test */,
 				F1DA3D922E5357FA001F8E4D /* HTTPClient */,
 			);
@@ -375,6 +448,8 @@
 			);
 			name = Aera;
 			packageProductDependencies = (
+				F1A671882E58D48B0057127C /* GoogleSignIn */,
+				F1A6718A2E58D48B0057127C /* GoogleSignInSwift */,
 			);
 			productName = Aera;
 			productReference = F1DA3D792E53575D001F8E4D /* Aera.app */;
@@ -404,6 +479,9 @@
 			);
 			mainGroup = F1DA3D702E53575D001F8E4D;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				F1A671872E58D48B0057127C /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = F1DA3D7A2E53575D001F8E4D /* Products */;
 			projectDirPath = "";
@@ -419,6 +497,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F1A671912E58D5C10057127C /* GoogleService-Info.plist in Resources */,
+				F1A671952E58DCC70057127C /* File.txt in Resources */,
 				F1DA3D812E53575E001F8E4D /* Assets.xcassets in Resources */,
 				F12DDBEB2E576593001E8D91 /* GridTwo.swift in Resources */,
 				F12DDBE92E576087001E8D91 /* FormBadge.swift in Resources */,
@@ -435,6 +515,7 @@
 				F1B8B5E12E55E64900C769C8 /* PhysicalExamListView.swift in Sources */,
 				DAD5B54F2E5707970046554F /* CDVisitFormView.swift in Sources */,
 				DAD5B54D2E5705A90046554F /* CDSymptomFormView.swift in Sources */,
+				F18284052E596B830056AF8D /* DeviceID.swift in Sources */,
 				F1DA3DAB2E5386CC001F8E4D /* CaseListView.swift in Sources */,
 				DAD5B53B2E56B58E0046554F /* PatientDetailScreen.swift in Sources */,
 				F1DA3DB82E5389BB001F8E4D /* NetworkRequestTestView.swift in Sources */,
@@ -447,37 +528,51 @@
 				F1DA3DA72E538690001F8E4D /* CaseListTabRoot.swift in Sources */,
 				F1DA3DBD2E54B954001F8E4D /* CaseCard.swift in Sources */,
 				F117E8602E57804600380807 /* SectionTitle.swift in Sources */,
+				F1A671782E58B9FF0057127C /* CaseListVM.swift in Sources */,
 				F12DDBF92E577CDB001E8D91 /* SymptomFieldChrome.swift in Sources */,
 				F1DA3DE02E54DC60001F8E4D /* RecognizeProcessingView.swift in Sources */,
+				F1A6718F2E58D4AE0057127C /* LoginView.swift in Sources */,
+				F1A6717A2E58BA4D0057127C /* CaseaListView.swift in Sources */,
 				F1DA3DB12E538725001F8E4D /* FlowLayout.swift in Sources */,
 				DAB5A84C2E5861ED008FAE6D /* DosingPlannerView.swift in Sources */,
+				F1A6716E2E58B98B0057127C /* Keychain.swift in Sources */,
+				F1A671702E58B9AE0057127C /* APIError.swift in Sources */,
 				F1DA3D7F2E53575D001F8E4D /* ContentView.swift in Sources */,
 				F1DA3DCF2E54BC48001F8E4D /* Screen.swift in Sources */,
+				F18284032E5957910056AF8D /* EmailRegisterView.swift in Sources */,
 				F12DDBFB2E577D70001E8D91 /* SymptomCard.swift in Sources */,
+				F18284012E5957830056AF8D /* EmailRegisterVM.swift in Sources */,
 				F12DDBF32E5770A3001E8D91 /* FormLabel.swift in Sources */,
+				F1A6718D2E58D4A60057127C /* LoginVM.swift in Sources */,
 				F12DDBF52E577C15001E8D91 /* VisitDivider.swift in Sources */,
 				F1DA3DDE2E54D7EC001F8E4D /* ConfirmRecognizedCaseView.swift in Sources */,
 				F1DA3DD62E54BE84001F8E4D /* CardSizing.swift in Sources */,
 				DAD5B5552E570AAE0046554F /* CDSurgeryFormView.swift in Sources */,
+				F1A671862E58D3BF0057127C /* AuthHelpers.swift in Sources */,
 				F12DDBE52E575D5E001E8D91 /* FormBottomBar.swift in Sources */,
 				F1DA3DA32E538649001F8E4D /* CaseItem.swift in Sources */,
 				DAD5B54B2E56F9900046554F /* CDReportFormView.swift in Sources */,
 				F1DA3D7D2E53575D001F8E4D /* AeraApp.swift in Sources */,
+				F1A671802E58C2FD0057127C /* RegisterVM.swift in Sources */,
 				F1DA3DDB2E54CECD001F8E4D /* CaseUploadChoiceView.swift in Sources */,
 				DAB5A84E2E58655A008FAE6D /* MVNotificationCenter.swift in Sources */,
 				F1DA3D942E535804001F8E4D /* HTTPClient.swift in Sources */,
+				F1A6716C2E58B97E0057127C /* APIConfig.swift in Sources */,
 				DAD5B5392E56AFA70046554F /* CaseDetailScreen.swift in Sources */,
 				F1DA3DD42E54BD1D001F8E4D /* Metrics+.swift in Sources */,
 				DAD5B5472E56F5FE0046554F /* AddEventRecordView.swift in Sources */,
+				F1A671762E58B9E30057127C /* APIClient.swift in Sources */,
 				F1DA3DA52E538680001F8E4D /* Repository.swift in Sources */,
 				F1DA3DAF2E538710001F8E4D /* SeverityBadge.swift in Sources */,
 				DAD5B5422E56EEF00046554F /* CDNewFormView.swift in Sources */,
 				F1B8B5DB2E55E4F300C769C8 /* ExamItem.swift in Sources */,
 				DAD5B5512E57095C0046554F /* CDMedicationFormView.swift in Sources */,
 				F1DA3DD22E54BCF7001F8E4D /* View+.swift in Sources */,
+				F1A6717C2E58C2E20057127C /* APIClient+Register.swift in Sources */,
 				F12DDBED2E576696001E8D91 /* FormDateTimeRow.swift in Sources */,
 				DAD5B5572E570C510046554F /* CDFollowupFormView.swift in Sources */,
 				F1DA3DB52E538851001F8E4D /* SwiftUIView.swift in Sources */,
+				F1A671842E58D3A20057127C /* APIClient+Auth.swift in Sources */,
 				F1DA3DE22E54E169001F8E4D /* CaseUploadHostView.swift in Sources */,
 				F12DDBF12E576BB7001E8D91 /* FormTextArea.swift in Sources */,
 			);
@@ -610,6 +705,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Aera/Aera.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Aera/Preview Content\"";
@@ -643,6 +739,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Aera/Aera.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Aera/Preview Content\"";
@@ -693,6 +790,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		F1A671872E58D48B0057127C /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/google/GoogleSignIn-iOS.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		F1A671882E58D48B0057127C /* GoogleSignIn */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F1A671872E58D48B0057127C /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
+			productName = GoogleSignIn;
+		};
+		F1A6718A2E58D48B0057127C /* GoogleSignInSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F1A671872E58D48B0057127C /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
+			productName = GoogleSignInSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = F1DA3D712E53575D001F8E4D /* Project object */;
 }
